@@ -5,7 +5,7 @@
 <div class="wrapper">
     @include('includes.preloader')
     @include('includes.navbar')
-    @include('includes.sidebar')
+    @include('includes.admin-sidebar')
 
     <!-- Content -->
     <div class="content-wrapper">

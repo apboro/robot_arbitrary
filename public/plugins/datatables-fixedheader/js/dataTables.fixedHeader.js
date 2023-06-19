@@ -917,7 +917,7 @@
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * DataTables interfaces
+     * DataTables Interfaces
      */
 
 // Attach for constructor access

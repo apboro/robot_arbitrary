@@ -18,8 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'surname',
         'name',
+        'middleName',
         'email',
+        'login',
         'password',
     ];
 
@@ -42,4 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function getWords(string $surname, string $name): string
+    {
+        return strtoupper($surname[0]) . strtoupper($name[0]);
+    }
 }

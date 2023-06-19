@@ -1,5 +1,5 @@
-@extends('main.layouts.app')
-@section('title', 'Главная')
+@extends('admin.layouts.app')
+@section('title', 'Администрирование')
 
 @section('content')
     <!-- Small boxes (Stat box) -->
