@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main\Admin\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
+use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Interfaces\admin\user\AdminUserInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -31,19 +32,22 @@ class AdminUserController extends Controller implements AdminUserInterface
         return redirect()->route('admin.user.index');
     }
 
-    public function show()
+    public function show(User $user)
     {
-        // TODO: Implement show() method.
+        return view('admin.user.show', compact('user'));
     }
 
-    public function edit()
+    public function edit(User $user)
     {
-        // TODO: Implement edit() method.
+        return view('admin.user.edit', compact('user'));
     }
 
-    public function update()
+    public function update(UpdateRequest $request, User $user)
     {
-        // TODO: Implement update() method.
+        $data = $request->validated();
+        $user->update($data);
+
+        return redirect()->route('admin.user.edit', compact('user'));
     }
 
     public function destroy()

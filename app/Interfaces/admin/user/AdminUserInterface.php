@@ -3,6 +3,7 @@
 namespace App\Interfaces\admin\user;
 
 use App\Http\Requests\Admin\User\StoreRequest;
+use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Models\User;
 
 interface AdminUserInterface
@@ -13,11 +14,11 @@ interface AdminUserInterface
 
     public function store(StoreRequest $request, User $user);
 
-    public function show();
+    public function show(User $user);
 
-    public function edit();
+    public function edit(User $user);
 
-    public function update();
+    public function update(UpdateRequest $request, User $user);
 
     public function destroy();
 }

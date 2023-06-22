@@ -15,24 +15,29 @@
                 </div>
                 <div class="info">
                     <div class="col-1">
-                        <div class="row-1 text-dark">{{ $user->surname }} {{ $user->name }}</div>
+                        <div
+                            class="row-1 text-dark">{{ $user->surname }} {{ $user->name }} {{ $user->middleName }}</div>
                         <div class="row-1"><span class="badge bg-danger">Администратор</span></div>
                     </div>
                 </div>
             </div>
             <div class="info p-2 d-flex align-items-end">
                 <div class="col">
-                    <a href="{{ route('main.index') }}" class="btn btn-light" data-bs-toggle="tooltip"
+                    <a href="{{ route('admin.user.show', $user->id) }}" class="btn btn-light" data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Просмотреть информацию о пользователе">
                         <i class="fas fa-eye"></i>
                     </a>
-                    <a href="{{ route('main.index') }}" class="btn btn-light" data-bs-toggle="tooltip"
+                    <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-light" data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Редактировать">
                         <i class="fas fa-edit"></i>
                     </a>
                     <a href="{{ route('main.index') }}" class="btn btn-light" data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Изменить роль">
                         <i class="fas fa-user-tag"></i>
+                    </a>
+                    <a href="{{ route('main.index') }}" class="btn btn-light" data-bs-toggle="tooltip"
+                       data-bs-html="true" data-bs-placement="top" title="Обновить пароль">
+                        <i class="fas fa-fingerprint"></i>
                     </a>
                     <a href="{{ route('main.index') }}" class="btn btn-light" data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Удалить">
