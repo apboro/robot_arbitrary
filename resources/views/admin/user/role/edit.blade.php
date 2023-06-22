@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
-@section('title', 'Пароль')
+@section('title', 'Роль')
 
 @section('content')
-    <form action="{{ route('admin.user.password.update', $user->id) }}" method="POST" class="form-horizontal w-50">
+    <form action="{{ route('admin.user.role.update', $user->id) }}" method="POST" class="form-horizontal w-50">
         @csrf
         @method('patch')
         <div class="form-group row">
@@ -13,9 +13,21 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputName" class="col-sm-2 col-form-label">Пароль</label>
+            <label for="inputName" class="col-sm-2 col-form-label">Текущая роль</label>
             <div class="col-sm-10">
-                <input type="password" name="password" class="form-control" value="" id="inputName">
+                <input type="text" class="form-control" value="{{ $user->role->title ?? 'Отсутствует' }}" id="inputName"
+                       readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="role_input" class="col-sm-2 col-form-label">Роль</label>
+            <div class="col-sm-10">
+                <select class="form-select" id="role_input" name="role_id">
+                    @foreach($roles as $role)
+                        <option
+                            value="{{ $role->id }}">{{ $role->title }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-group row">

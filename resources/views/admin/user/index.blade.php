@@ -33,7 +33,8 @@
                        data-bs-html="true" data-bs-placement="top" title="Редактировать">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a href="{{ route('main.index') }}" class="btn btn-light mx-1" data-bs-toggle="tooltip"
+                    <a href="{{ route('admin.user.role.edit', $user->id) }}" class="btn btn-light mx-1"
+                       data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Изменить роль">
                         <i class="fas fa-user-tag"></i>
                     </a>
