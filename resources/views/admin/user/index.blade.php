@@ -21,8 +21,8 @@
                     </div>
                 </div>
             </div>
-            <div class="info p-2 d-flex align-items-end">
-                <div class="col">
+            <div class="info p-2">
+                <div class="d-flex">
                     <a href="{{ route('admin.user.show', $user->id) }}" class="btn btn-light" data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Просмотреть информацию о пользователе">
                         <i class="fas fa-eye"></i>
@@ -39,10 +39,13 @@
                        data-bs-html="true" data-bs-placement="top" title="Обновить пароль">
                         <i class="fas fa-fingerprint"></i>
                     </a>
-                    <a href="{{ route('main.index') }}" class="btn btn-light" data-bs-toggle="tooltip"
-                       data-bs-html="true" data-bs-placement="top" title="Удалить">
-                        <i class="fas fa-trash-alt text-danger"></i>
-                    </a>
+                    <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-light" data-bs-toggle="tooltip"
+                                data-bs-html="true" data-bs-placement="top" title="Удалить"><i
+                                class="fas fa-trash-alt text-danger"></i></button>
+                    </form>
                 </div>
             </div>
         </div>

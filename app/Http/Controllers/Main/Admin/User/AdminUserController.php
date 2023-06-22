@@ -50,9 +50,11 @@ class AdminUserController extends Controller implements AdminUserInterface
         return redirect()->route('admin.user.edit', compact('user'));
     }
 
-    public function destroy()
+    public function destroy(User $user)
     {
-        // TODO: Implement destroy() method.
+        $user->delete();
+
+        return redirect()->route('admin.user.index');
     }
 
     private function getWords(string $surname, string $name): string

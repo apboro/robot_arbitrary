@@ -20,5 +20,5 @@ interface AdminUserInterface
 
     public function update(UpdateRequest $request, User $user);
 
-    public function destroy();
+    public function destroy(User $user);
 }
