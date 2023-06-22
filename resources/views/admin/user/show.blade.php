@@ -11,7 +11,7 @@
                              alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center">{{ $user->surname }} {{ $user->name }} {{ $user->middleName }}</h3>
-                    <p class="text-muted text-center">Администратор</p>
+                    <p class="text-muted text-center">@include('includes.get-role')</p>
                     <ul class="list-group mb-3">
                         <li class="list-group-item">
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>

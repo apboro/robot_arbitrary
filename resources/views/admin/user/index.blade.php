@@ -4,7 +4,9 @@
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Управление пользователями</span>
-        <div><a href="{{ route('admin.user.create') }}" class="btn btn-block btn-outline-primary btn-sm">Создать</a>
+        <div class="d-flex">
+            <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary btn-sm">Создать</a>
+            <a href="" class="btn btn-outline-danger ml-2 btn-sm">Удаленные</a>
         </div>
     </div>
     @foreach($users as $user)
@@ -17,7 +19,9 @@
                     <div class="col-1">
                         <div
                             class="row-1 text-dark">{{ $user->surname }} {{ $user->name }} {{ $user->middleName }}</div>
-                        <div class="row-1"><span class="badge bg-danger">{{ $user->role->title }}</span></div>
+                        <div class="row-1">
+                            @include('includes.get-role')
+                        </div>
                     </div>
                 </div>
             </div>

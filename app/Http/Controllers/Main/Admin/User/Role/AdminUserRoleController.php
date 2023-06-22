@@ -11,7 +11,7 @@ class AdminUserRoleController extends Controller
 {
     public function edit(User $user)
     {
-        $roles = Role::all();
+        $roles = Role::all()->sortBy('id');
         return view('admin.user.role.edit', compact('user', 'roles'));
     }
 
