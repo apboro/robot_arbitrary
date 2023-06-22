@@ -19,10 +19,6 @@
                 <input type="text" name="middleName" class="form-control" id="">
             </div>
             <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" name="email" class="form-control" id="">
-            </div>
-            <div class="form-group">
                 <label for="">Логин</label>
                 <input type="text" name="login" class="form-control" id="">
             </div>

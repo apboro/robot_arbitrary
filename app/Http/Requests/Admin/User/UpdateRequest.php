@@ -25,10 +25,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'surname' => 'required|string',
-            'user_id' => 'required|integer|exists:users,id',
             'middleName' => 'required|string',
-            'email' => 'required|string|email|unique:users,email,' . $this->user_id,
-//            'role_id' => 'required|integer|exists:roles,id',
         ];
     }
 }

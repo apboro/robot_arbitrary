@@ -24,13 +24,6 @@
                        id="inputName">
             </div>
         </div>
-        <input type="hidden" name="user_id" value="{{ $user->id }}">
-        <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">Почта</label>
-            <div class="col-sm-10">
-                <input type="email" name="email" class="form-control" value="{{ $user->email }}" id="inputEmail">
-            </div>
-        </div>
         <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
                 <button type="submit" class="btn btn-danger">Обновить</button>

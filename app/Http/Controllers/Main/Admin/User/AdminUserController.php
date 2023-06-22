@@ -30,7 +30,7 @@ class AdminUserController extends Controller implements AdminUserInterface
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
-        User::firstOrCreate(['login' => $data['login'], 'email' => $data['email']], $data);
+        User::firstOrCreate(['login' => $data['login']], $data);
 
         return redirect()->route('admin.user.index');
     }
