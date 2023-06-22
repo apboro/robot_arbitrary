@@ -17,7 +17,7 @@
                     <div class="col-1">
                         <div
                             class="row-1 text-dark">{{ $user->surname }} {{ $user->name }} {{ $user->middleName }}</div>
-                        <div class="row-1"><span class="badge bg-danger">Администратор</span></div>
+                        <div class="row-1"><span class="badge bg-danger">{{ $user->role->title }}</span></div>
                     </div>
                 </div>
             </div>
