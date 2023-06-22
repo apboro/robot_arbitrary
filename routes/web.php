@@ -5,6 +5,7 @@ use App\Http\Controllers\Main\Admin\AdminController;
 use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
+use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,11 @@ Route::group(['namespace' => 'Main'], function () {
             Route::group(['namespace' => 'Password', 'prefix' => 'user/{user}/password'], function () {
                 Route::get('/edit', [AdminPasswordUserController::class, 'edit'])->name('admin.user.password.edit');
                 Route::patch('/', [AdminPasswordUserController::class, 'update'])->name('admin.user.password.update');
+            });
+
+            Route::group(['namespace' => 'Role', 'prefix' => 'user/{user}/role'], function () {
+                Route::get('/edit', [AdminUserRoleController::class, 'edit'])->name('admin.user.role.edit');
+                Route::patch('/', [AdminUserRoleController::class, 'update'])->name('admin.user.role.update');
             });
         });
 
