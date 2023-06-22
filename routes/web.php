@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\Admin\AdminController;
+use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\IndexController;
@@ -42,6 +43,15 @@ Route::group(['namespace' => 'Main'], function () {
                 Route::get('/edit', [AdminPasswordUserController::class, 'edit'])->name('admin.user.password.edit');
                 Route::patch('/', [AdminPasswordUserController::class, 'update'])->name('admin.user.password.update');
             });
+        });
+
+        Route::group(['namespace' => 'Role', 'prefix' => 'roles'], function () {
+            Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
+            Route::get('/create', [RoleController::class, 'create'])->name('admin.role.create');
+            Route::post('/', [RoleController::class, 'store'])->name('admin.role.store');
+            Route::get('/role/{role}/edit', [RoleController::class, 'edit'])->name('admin.role.edit');
+            Route::patch('/role/{role}', [RoleController::class, 'update'])->name('admin.role.update');
+            Route::delete('/role/{role}', [RoleController::class, 'destroy'])->name('admin.role.destroy');
         });
     });
 });

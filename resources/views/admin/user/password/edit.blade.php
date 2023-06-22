@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
-@section('title', 'Новый пароль')
+@section('title')
+    Новый пароль: {{ $user->surname }} {{ $user->name }}
+@endsection
 
 @section('content')
     <form action="{{ route('admin.user.password.update', $user->id) }}" method="POST" class="form-horizontal w-25">
