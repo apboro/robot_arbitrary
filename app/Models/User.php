@@ -30,7 +30,6 @@ class User extends Authenticatable
         'surname',
         'name',
         'middleName',
-        'email',
         'login',
         'password',
         'role_id'
