@@ -15,7 +15,7 @@ class AdminUserController extends Controller implements AdminUserInterface
 
     public function index()
     {
-        $users = User::all()->sortBy('created_at');
+        $users = User::all()->sortBy('id');
         return view('admin.user.index', compact('users'));
     }
 

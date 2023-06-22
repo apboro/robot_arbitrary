@@ -29,9 +29,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-cog mr-2"></i>
-                        <p>Администрирование <i class="fas fa-angle-right right"></i></p>
+                    <a href="{{ route('admin.role.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-tag mr-2"></i>
+                        <p>Роли <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
             </ul>
