@@ -14,6 +14,10 @@
                     <p class="text-muted text-center">Администратор</p>
                     <ul class="list-group mb-3">
                         <li class="list-group-item">
+                            <strong><i class="fas fa-clock"></i> Дата создания</strong>
+                            <p class="text-muted">{{ $dateCreated->day }} {{ $dateCreated->translatedFormat('F') }} {{ $dateCreated->year }} {{ $dateCreated->format('H:i') }}</p>
+                        </li>
+                        <li class="list-group-item">
                             <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                             <p class="text-muted">
                                 Б-12
@@ -31,7 +35,7 @@
                         </li>
                     </ul>
                     <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-block"><b>Редактировать</b></a>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-secondary btn-block"><b>Отмена</b></a>
+                    <a href="{{ route('admin.user.index') }}" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
                 </div>
             </div>
         </div>
