@@ -4,9 +4,22 @@
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Управление пользователями</span>
-        <div class="d-flex">
-            <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary btn-sm">Создать</a>
-            <a href="" class="btn btn-outline-danger ml-2 btn-sm">Удаленные</a>
+        <div class="d-flex align-items-center">
+            <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip"
+               data-bs-html="true" data-bs-placement="top" title="Добавить нового пользователя"><i
+                    class="fas fa-user-plus mr-1"></i> Создать</a>
+            <a href="" class="btn btn-outline-primary ml-2 btn-sm" data-bs-toggle="tooltip"
+               data-bs-html="true" data-bs-placement="top" title="Импортировать данные из .xlsx файла"><i
+                    class="fas fa-file-import mr-1"></i> Импорт</a>
+            <a href="" class="btn btn-outline-danger ml-2 btn-sm" data-bs-toggle="tooltip"
+               data-bs-html="true" data-bs-placement="top" title="Работа с пользователями которые были удалены"><i
+                    class="fas fa-user-times mr-1"></i> Удаленные</a>
+            <form action="" class="form-horizontal ml-2">
+                <div class="d-flex">
+                    <input type="search" name="" id="" class="form-control" placeholder="Поиск...">
+                    <input type="submit" class="btn btn-light border border-1 ml-1" value="Найти">
+                </div>
+            </form>
         </div>
     </div>
     @foreach($users as $user)
@@ -30,7 +43,7 @@
                     <a href="{{ route('admin.user.show', $user->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Просмотреть информацию о пользователе">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-address-book"></i>
                     </a>
                     <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"

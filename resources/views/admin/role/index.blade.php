@@ -4,7 +4,9 @@
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Управление ролями</span>
-        <div><a href="{{ route('admin.role.create') }}" class="btn btn-block btn-outline-primary btn-sm">Создать</a>
+        <div><a href="{{ route('admin.role.create') }}" class="btn btn-block btn-outline-primary btn-sm"
+                data-bs-toggle="tooltip"
+                data-bs-html="true" data-bs-placement="top" title="Создать новую роль">Создать</a>
         </div>
     </div>
     @forelse($roles as $role)

@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <form action="{{ route('admin.user.store') }}" method="POST">
+    <form action="{{ route('admin.user.store') }}" method="POST" class="form-horizontal w-10">
         @csrf
         <div class="card-body w-25">
             <div class="form-group">
@@ -36,9 +36,9 @@
                 </select>
             </div>
         </div>
-
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-danger"><b>Создать</b></button>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
         </div>
     </form>
 @endsection

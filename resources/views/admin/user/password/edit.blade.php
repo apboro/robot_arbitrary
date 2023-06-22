@@ -20,8 +20,8 @@
         </div>
         <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Обновить</button>
-                <a href="{{ route('admin.user.index') }}" class="btn btn-secondary"><b>Отмена</b></a>
+                <button type="submit" class="btn btn-danger"><b>Обновить</b></button>
+                <a href="{{ route('admin.user.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
             </div>
         </div>
     </form>
