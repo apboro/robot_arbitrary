@@ -30,6 +30,15 @@
                 <label for="">Пароль</label>
                 <input type="password" name="password" class="form-control" id="">
             </div>
+            <div class="form-group">
+                <label for="role_input" class="col-form-label">Роль</label>
+                <select class="form-select" id="role_input" name="role_id">
+                    @foreach($roles as $role)
+                        <option
+                            value="{{ $role->id }}">{{ $role->title }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <div class="card-footer">

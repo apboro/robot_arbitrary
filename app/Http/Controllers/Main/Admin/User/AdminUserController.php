@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Interfaces\admin\user\AdminUserInterface;
+use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,8 @@ class AdminUserController extends Controller implements AdminUserInterface
 
     public function create()
     {
-        return view('admin.user.create');
+        $roles = Role::all()->sortBy('id');
+        return view('admin.user.create', compact('roles'));
     }
 
     public function store(StoreRequest $request, User $user)
