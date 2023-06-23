@@ -6,6 +6,7 @@ use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
+use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,12 @@ Route::group(['namespace' => 'Main'], function () {
             Route::group(['namespace' => 'Role', 'prefix' => 'user/{user}/role'], function () {
                 Route::get('/edit', [AdminUserRoleController::class, 'edit'])->name('admin.user.role.edit');
                 Route::patch('/', [AdminUserRoleController::class, 'update'])->name('admin.user.role.update');
+            });
+
+            Route::group(['namespace' => 'Trash', 'prefix' => 'trashes'], function () {
+                Route::get('/', [AdminUserTrashController::class, 'index'])->name('admin.user.trash.index');
+                Route::post('/{id}/restore', [AdminUserTrashController::class, 'restore'])->name('admin.user.trash.restore');
+                Route::post('/{id}/force', [AdminUserTrashController::class, 'force'])->name('admin.user.trash.force');
             });
         });
 

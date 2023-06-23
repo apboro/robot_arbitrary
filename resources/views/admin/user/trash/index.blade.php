@@ -11,8 +11,7 @@
             <a href="" class="btn btn-outline-primary ml-2 btn-sm" data-bs-toggle="tooltip"
                data-bs-html="true" data-bs-placement="top" title="Импортировать данные из .xlsx файла"><i
                     class="fas fa-file-import mr-1"></i> Импорт</a>
-            <a href="{{ route('admin.user.trash.index') }}" class="btn btn-outline-danger ml-2 btn-sm"
-               data-bs-toggle="tooltip"
+            <a href="" class="btn btn-outline-danger ml-2 btn-sm" data-bs-toggle="tooltip"
                data-bs-html="true" data-bs-placement="top" title="Работа с пользователями которые были удалены"><i
                     class="fas fa-user-times mr-1"></i> Удаленные</a>
             <form action="" class="form-horizontal ml-2">
@@ -23,7 +22,7 @@
             </form>
         </div>
     </div>
-    @foreach($users as $user)
+    @forelse($users as $user)
         <div class="d-flex align-items-center justify-content-between">
             <div class="user-panel d-flex align-items-center">
                 <div class="image">
@@ -41,35 +40,22 @@
             </div>
             <div class="info p-2">
                 <div class="d-flex gx-5">
-                    <a href="{{ route('admin.user.show', $user->id) }}" class="btn btn-light mx-1"
-                       data-bs-toggle="tooltip"
-                       data-bs-html="true" data-bs-placement="top" title="Просмотреть информацию о пользователе">
-                        <i class="fas fa-address-book"></i>
-                    </a>
-                    <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-light mx-1"
-                       data-bs-toggle="tooltip"
-                       data-bs-html="true" data-bs-placement="top" title="Редактировать">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a href="{{ route('admin.user.role.edit', $user->id) }}" class="btn btn-light mx-1"
-                       data-bs-toggle="tooltip"
-                       data-bs-html="true" data-bs-placement="top" title="Изменить роль">
-                        <i class="fas fa-user-tag"></i>
-                    </a>
-                    <a href="{{ route('admin.user.password.edit', $user->id) }}" class="btn btn-light mx-1"
-                       data-bs-toggle="tooltip"
-                       data-bs-html="true" data-bs-placement="top" title="Обновить пароль">
-                        <i class="fas fa-fingerprint"></i>
-                    </a>
-                    <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
+                    <form action="{{ route('admin.user.trash.restore', $user->id) }}" method="POST">
                         @csrf
-                        @method('DELETE')
                         <button type="submit" class="btn btn-light ml-1" data-bs-toggle="tooltip"
-                                data-bs-html="true" data-bs-placement="top" title="Удалить"><i
+                                data-bs-html="true" data-bs-placement="top" title="Восстановить"><i
+                                class="fas fa-trash-restore"></i></button>
+                    </form>
+                    <form action="{{ route('admin.user.trash.force', $user->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-light ml-1" data-bs-toggle="tooltip"
+                                data-bs-html="true" data-bs-placement="top" title="Удалить навсегда"><i
                                 class="fas fa-trash-alt text-danger"></i></button>
                     </form>
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        @include('includes.no-data')
+    @endforelse
 @endsection
