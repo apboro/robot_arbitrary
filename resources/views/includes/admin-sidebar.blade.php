@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.user.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users mr-2"></i>
+                        <i class="fas fa-users-cog mr-2"></i>
                         <p>Пользователи <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
@@ -32,6 +32,12 @@
                     <a href="{{ route('admin.role.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-tag mr-2"></i>
                         <p>Роли <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.group.index') }}" class="nav-link">
+                        <i class="fas fa-users mr-2"></i>
+                        <p>Группы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
             </ul>

@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
-@section('title', 'Создание роли')
+@section('title', 'Создание группы')
 
 @section('content')
 
-    <form action="{{ route('admin.role.store') }}" method="POST">
+    <form action="{{ route('admin.group.store') }}" method="POST">
         @csrf
         <div class="card-body w-25">
             <div class="form-group">
