@@ -10,16 +10,28 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        @include('main.includes.user-info')
+        @include('includes.user-info')
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users mr-3"></i>
+                    <a href="{{ route('main.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-home mr-2"></i>
+                        <p>Главная <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-users mr-2"></i>
                         <p>Пользователи <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.role.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-tag mr-2"></i>
+                        <p>Роли <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
             </ul>
