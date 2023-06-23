@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\Admin\AdminController;
+use App\Http\Controllers\Main\Admin\Group\AdminGroupController;
 use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
@@ -65,6 +66,16 @@ Route::group(['namespace' => 'Main'], function () {
             Route::get('/role/{role}/edit', [RoleController::class, 'edit'])->name('admin.role.edit');
             Route::patch('/role/{role}', [RoleController::class, 'update'])->name('admin.role.update');
             Route::delete('/role/{role}', [RoleController::class, 'destroy'])->name('admin.role.destroy');
+        });
+
+        Route::group(['namespace' => 'Group', 'prefix' => 'groups'], function () {
+            Route::get('/', [AdminGroupController::class, 'index'])->name('admin.group.index');
+            Route::get('/create', [AdminGroupController::class, 'create'])->name('admin.group.create');
+            Route::post('/', [AdminGroupController::class, 'store'])->name('admin.group.store');
+            Route::get('/group/{group}', [AdminGroupController::class, 'show'])->name('admin.group.show');
+            Route::get('/group/{group}/edit', [AdminGroupController::class, 'edit'])->name('admin.group.edit');
+            Route::patch('/group/{group}', [AdminGroupController::class, 'update'])->name('admin.group.update');
+            Route::delete('/group/{group}', [AdminGroupController::class, 'destroy'])->name('admin.group.destroy');
         });
     });
 });
