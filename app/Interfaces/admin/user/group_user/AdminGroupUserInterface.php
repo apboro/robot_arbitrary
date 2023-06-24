@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Interfaces\admin\group_user;
+namespace App\Interfaces\admin\user\group_user;
 
-use App\Http\Requests\Admin\GroupUser\StoreRequest;
-use App\Http\Requests\Admin\GroupUser\UpdateRequest;
+use App\Http\Requests\Admin\User\GroupUser\StoreRequest;
+use App\Http\Requests\Admin\User\GroupUser\UpdateRequest;
 use App\Models\User;
 
 interface AdminGroupUserInterface

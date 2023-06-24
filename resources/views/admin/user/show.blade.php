@@ -138,7 +138,9 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="settings">
-                            <form class="form-horizontal">
+                            <form action="{{ route('admin.user.group.store', $user->id) }}" method="POST"
+                                  class="form-horizontal">
+                                @csrf
                                 <div class="form-group row">
                                     <label for="inputName" class="col-sm-2 col-form-label">Текущая группа</label>
                                     <div class="col-sm-10">
@@ -146,6 +148,7 @@
                                                readonly>
                                     </div>
                                 </div>
+                                <input type="text" name="user_id" value="{{ $user->id }}" id="">
                                 <div class="form-group row">
                                     <label for="group_id" class="col-sm-2 col-form-label">Новая группа</label>
                                     <div class="col-sm-10">

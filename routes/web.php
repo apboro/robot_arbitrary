@@ -6,6 +6,7 @@ use App\Http\Controllers\Main\Admin\Group\AdminGroupController;
 use App\Http\Controllers\Main\Admin\Item\AdminItemController;
 use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
+use App\Http\Controllers\Main\Admin\User\GroupUser\AdminGroupUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
@@ -57,6 +58,11 @@ Route::group(['namespace' => 'Main'], function () {
                 Route::get('/', [AdminUserTrashController::class, 'index'])->name('admin.user.trash.index');
                 Route::post('/{id}/restore', [AdminUserTrashController::class, 'restore'])->name('admin.user.trash.restore');
                 Route::post('/{id}/force', [AdminUserTrashController::class, 'force'])->name('admin.user.trash.force');
+            });
+
+            Route::group(['namespace' => 'GroupUser', 'prefix' => '{user}/group'], function () {
+                Route::post('/', [AdminGroupUserController::class, 'store'])->name('admin.user.group.store');
+                Route::patch('/', [AdminGroupUserController::class, 'update'])->name('admin.user.group.update');
             });
         });
 

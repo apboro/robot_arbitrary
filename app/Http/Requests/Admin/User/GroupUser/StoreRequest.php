@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\GroupUser;
+namespace App\Http\Requests\Admin\User\GroupUser;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
