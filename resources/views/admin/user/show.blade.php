@@ -20,9 +20,11 @@
                         <li class="list-group-item">
                             <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                             <p class="text-muted">
-                                @foreach($userGroups as $userGroup)
+                                @forelse($userGroups as $userGroup)
                                     {{ $userGroup->title ?? 'Отсутствует' }}
-                                @endforeach
+                                @empty
+                                    Отсутствует
+                                @endforelse
                             </p>
                         </li>
                         <li class="list-group-item">
@@ -143,7 +145,7 @@
                             <form action="{{ route('admin.user.group.store', $user->id) }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
-                                @foreach($userGroups as $userGroup)
+                                @forelse($userGroups as $userGroup)
                                     <div class="border-bottom">
                                         <div class="form-group row">
                                             <label for="inputName" class="col-sm-2 col-form-label">Текущая
@@ -165,7 +167,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    @include('includes.no-data')
+                                @endforelse
                                 <input type="hidden" name="user_id" value="{{ $user->id }}" id="">
                                 <div class="form-group row mt-4">
                                     <label for="group_id" class="col-sm-2 col-form-label">Новая группа</label>
