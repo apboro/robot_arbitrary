@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\Admin\AdminController;
 use App\Http\Controllers\Main\Admin\Group\AdminGroupController;
+use App\Http\Controllers\Main\Admin\Item\AdminItemController;
 use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
@@ -76,6 +77,16 @@ Route::group(['namespace' => 'Main'], function () {
             Route::get('/group/{group}/edit', [AdminGroupController::class, 'edit'])->name('admin.group.edit');
             Route::patch('/group/{group}', [AdminGroupController::class, 'update'])->name('admin.group.update');
             Route::delete('/group/{group}', [AdminGroupController::class, 'destroy'])->name('admin.group.destroy');
+        });
+
+        Route::group(['namespace' => 'Item', 'prefix' => 'items'], function () {
+            Route::get('/', [AdminItemController::class, 'index'])->name('admin.item.index');
+            Route::get('/create', [AdminItemController::class, 'create'])->name('admin.item.create');
+            Route::post('/', [AdminItemController::class, 'store'])->name('admin.item.store');
+            Route::get('/item/{item}', [AdminItemController::class, 'show'])->name('admin.item.show');
+            Route::get('/item/{item}/edit', [AdminItemController::class, 'edit'])->name('admin.item.edit');
+            Route::patch('/item/{item}', [AdminItemController::class, 'update'])->name('admin.item.update');
+            Route::delete('/item/{item}', [AdminItemController::class, 'destroy'])->name('admin.item.destroy');
         });
     });
 });

@@ -40,6 +40,12 @@
                         <p>Группы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.item.index') }}" class="nav-link">
+                        <i class="fas fa-book mr-2"></i>
+                        <p>Предметы <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

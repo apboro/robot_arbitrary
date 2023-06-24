@@ -11,7 +11,8 @@
                 <input type="text" name="title" class="form-control" id="">
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Создать</button>
+                <button type="submit" class="btn btn-danger"><b>Создать</b></button>
+                <a href="{{ route('admin.role.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
             </div>
         </div>
     </form>
