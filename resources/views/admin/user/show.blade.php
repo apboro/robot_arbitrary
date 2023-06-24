@@ -148,7 +148,7 @@
                                                readonly>
                                     </div>
                                 </div>
-                                <input type="text" name="user_id" value="{{ $user->id }}" id="">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}" id="">
                                 <div class="form-group row">
                                     <label for="group_id" class="col-sm-2 col-form-label">Новая группа</label>
                                     <div class="col-sm-10">
