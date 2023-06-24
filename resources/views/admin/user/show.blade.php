@@ -21,7 +21,7 @@
                             <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                             <p class="text-muted">
                                 @foreach($userGroups as $userGroup)
-                                    {{ $userGroup->title }}
+                                    {{ $userGroup->title ?? 'Отсутствует' }}
                                 @endforeach
                             </p>
                         </li>
