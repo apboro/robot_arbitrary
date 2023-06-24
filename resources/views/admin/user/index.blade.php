@@ -44,7 +44,7 @@
                     <a href="{{ route('admin.user.show', $user->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Просмотреть информацию о пользователе">
-                        <i class="fas fa-address-book"></i>
+                        <i class="fas fa-id-badge"></i>
                     </a>
                     <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"

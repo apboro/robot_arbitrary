@@ -23,7 +23,7 @@
                     <a href="{{ route('admin.group.show', $group->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top" title="Просмотреть информацию о группе">
-                        <i class="fas fa-address-book"></i>
+                        <i class="fas fa-id-badge"></i>
                     </a>
                     <a href="{{ route('admin.group.edit', $group->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"
