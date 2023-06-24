@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Interfaces\admin\user\AdminUserInterface;
+use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
@@ -37,8 +38,9 @@ class AdminUserController extends Controller implements AdminUserInterface
 
     public function show(User $user)
     {
+        $groups = Group::all()->sortBy('id');
         $dateCreated = Carbon::parse($user->created_at);
-        return view('admin.user.show', compact('user', 'dateCreated'));
+        return view('admin.user.show', compact('user', 'dateCreated', 'groups'));
     }
 
     public function edit(User $user)

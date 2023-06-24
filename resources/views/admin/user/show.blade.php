@@ -46,6 +46,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -135,6 +136,32 @@
                                     <i class="far fa-clock bg-gray"></i>
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane" id="settings">
+                            <form class="form-horizontal">
+                                <div class="form-group row">
+                                    <label for="inputName" class="col-sm-2 col-form-label">Текущая группа</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" value="Отсутствует" id="inputName"
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="group_id" class="col-sm-2 col-form-label">Новая группа</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" id="group_id" name="group_id">
+                                            @foreach($groups as $group)
+                                                <option value="{{ $group->id }}">{{ $group->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Применить</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
