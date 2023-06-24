@@ -62,7 +62,6 @@ Route::group(['namespace' => 'Main'], function () {
 
             Route::group(['namespace' => 'GroupUser', 'prefix' => '{user}/group'], function () {
                 Route::post('/', [AdminGroupUserController::class, 'store'])->name('admin.user.group.store');
-                Route::patch('/', [AdminGroupUserController::class, 'update'])->name('admin.user.group.update');
             });
         });
 

@@ -9,6 +9,4 @@ use App\Models\User;
 interface AdminGroupUserInterface
 {
     public function store(StoreRequest $request, User $user);
-
-    public function update(UpdateRequest $request, User $user);
 }

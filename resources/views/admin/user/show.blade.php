@@ -20,7 +20,9 @@
                         <li class="list-group-item">
                             <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                             <p class="text-muted">
-                                Б-12
+                                @foreach($userGroups as $userGroup)
+                                    {{ $userGroup->title }}
+                                @endforeach
                             </p>
                         </li>
                         <li class="list-group-item">
@@ -141,15 +143,31 @@
                             <form action="{{ route('admin.user.group.store', $user->id) }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
-                                <div class="form-group row">
-                                    <label for="inputName" class="col-sm-2 col-form-label">Текущая группа</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" value="Отсутствует" id="inputName"
-                                               readonly>
+                                @foreach($userGroups as $userGroup)
+                                    <div class="border-bottom">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Текущая
+                                                группа</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control"
+                                                       value="{{ $userGroup->title ?? 'Отсутствует' }}" id="inputName"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Дата
+                                                зачисления</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control"
+                                                       value="{{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->day }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->year }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->format('H:i:s') }}"
+                                                       id="inputName"
+                                                       readonly>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                                 <input type="hidden" name="user_id" value="{{ $user->id }}" id="">
-                                <div class="form-group row">
+                                <div class="form-group row mt-4">
                                     <label for="group_id" class="col-sm-2 col-form-label">Новая группа</label>
                                     <div class="col-sm-10">
                                         <select class="form-select" id="group_id" name="group_id">
