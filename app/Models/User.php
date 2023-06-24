@@ -21,6 +21,7 @@ class User extends Authenticatable
     const ROLE_CURATOR = 4;
     const ROLE_ROBOT = 5;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *

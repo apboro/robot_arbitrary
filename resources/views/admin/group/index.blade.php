@@ -6,7 +6,8 @@
         <span class="fw-bolder">Управление группами</span>
         <div><a href="{{ route('admin.group.create') }}" class="btn btn-block btn-outline-primary btn-sm"
                 data-bs-toggle="tooltip"
-                data-bs-html="true" data-bs-placement="top" title="Создать новую роль">Создать</a>
+                data-bs-html="true" data-bs-placement="top" title="Создать новую роль"><i class="fas fa-plus"></i>
+                Создать</a>
         </div>
     </div>
     @forelse($groups as $group)

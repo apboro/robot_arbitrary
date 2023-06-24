@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
-@section('title', 'Создание группы')
+@section('title', 'Создание предмета')
 
 @section('content')
 
-    <form action="{{ route('admin.group.store') }}" method="POST">
+    <form action="{{ route('admin.item.store') }}" method="POST">
         @csrf
         <div class="card-body w-25">
             <div class="form-group">
@@ -11,8 +11,8 @@
                 <input type="text" name="title" class="form-control" id="">
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-danger"><b>Создать</b></button>
-                <a href="{{ route('admin.group.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
+                <button type="submit" class="btn btn-primary"><b>Создать</b></button>
+                <a href="{{ route('admin.item.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
             </div>
         </div>
     </form>
