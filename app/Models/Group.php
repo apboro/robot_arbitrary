@@ -20,11 +20,16 @@ class Group extends Model
 
     public function students(): BelongsToMany
     {
-        return $this->belongsToMany(User::class)->withPivot(['created_at'])->withTimestamps();
+        return $this->belongsToMany(User::class, 'group_user')->withPivot(['created_at'])->withTimestamps();
     }
 
-    public function specializations()
+    public function specializations(): BelongsToMany
     {
-        return $this->belongsToMany(Specialization::class)->withTimestamps();
+        return $this->belongsToMany(Specialization::class, 'group_specialization')->withTimestamps();
+    }
+
+    public function curators(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'curator_group')->withTimestamps();
     }
 }

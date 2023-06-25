@@ -69,6 +69,11 @@ class User extends Authenticatable
 
     public function groups(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class)->withPivot(['created_at'])->withTimestamps();
+        return $this->belongsToMany(Group::class, 'group_user')->withPivot(['created_at'])->withTimestamps();
+    }
+
+    public function teams(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class, 'curator_group')->withTimestamps();
     }
 }

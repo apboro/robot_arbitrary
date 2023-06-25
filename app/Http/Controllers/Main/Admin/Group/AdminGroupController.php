@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Group\UpdateRequest;
 use App\Interfaces\admin\groups\AdminGroupInterface;
 use App\Models\Group;
 use App\Models\Specialization;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -35,11 +36,13 @@ class AdminGroupController extends Controller implements AdminGroupInterface
 
     public function show(Group $group)
     {
+        $curators = $group->curators;
+        $teachers = User::where('role_id', User::ROLE_TEACHER)->get();
         $specializations = Specialization::all()->sortBy('id');
         $groupSpecializations = $group->specializations;
         $students = $group->students;
         $dateCreated = Carbon::parse($group->created_at);
-        return view('admin.group.show', compact('group', 'dateCreated', 'students', 'specializations', 'groupSpecializations'));
+        return view('admin.group.show', compact('group', 'dateCreated', 'students', 'specializations', 'groupSpecializations', 'teachers', 'curators'));
     }
 
     public function edit(Group $group)
