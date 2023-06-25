@@ -15,7 +15,8 @@
                 <div class="icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i
+                        class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -30,7 +31,8 @@
                 <div class="icon">
                     <i class="fas fa-layer-group"></i>
                 </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.group.index') }}" class="small-box-footer">Подробнее <i
+                        class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -45,7 +47,8 @@
                 <div class="icon">
                     <i class="fas fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.item.index') }}" class="small-box-footer">Подробнее <i
+                        class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

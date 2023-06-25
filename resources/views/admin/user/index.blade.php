@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
-        <span class="fw-bolder">Управление пользователями <sup>{{ $userCount }}</sup></span>
+        <span class="fw-bolder">Управление пользователями</span>
         <div class="d-flex align-items-center">
             <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip"
                data-bs-html="true" data-bs-placement="top" title="Добавить нового пользователя"><i
@@ -15,15 +15,17 @@
                data-bs-toggle="tooltip"
                data-bs-html="true" data-bs-placement="top" title="Работа с пользователями которые были удалены"><i
                     class="fas fa-user-times mr-1"></i> Удаленные</a>
-            <form action="" class="form-horizontal ml-2">
+            <form action="{{ route('admin.user.search') }}" method="GET" class="form-horizontal ml-2">
                 <div class="d-flex">
-                    <input type="search" name="" id="" class="form-control" placeholder="Поиск...">
+                    <input type="search" name="search" value="{{ isset($search) ?? '' }}" class="form-control"
+                           placeholder="Поиск...">
                     <input type="submit" class="btn btn-light border border-1 ml-1" value="Найти">
+                    <a href="{{ route('admin.user.index') }}" class="btn btn-light border border-1 ml-1">Сбросить</a>
                 </div>
             </form>
         </div>
     </div>
-    @foreach($users as $user)
+    @forelse($users as $user)
         <div class="d-flex align-items-center justify-content-between border-bottom">
             <div class="user-panel d-flex align-items-center">
                 <div class="image">
@@ -71,5 +73,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        @include('includes.no-data')
+    @endforelse
 @endsection
