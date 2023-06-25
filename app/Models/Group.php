@@ -22,4 +22,9 @@ class Group extends Model
     {
         return $this->belongsToMany(User::class)->withPivot(['created_at'])->withTimestamps();
     }
+
+    public function specializations()
+    {
+        return $this->belongsToMany(Specialization::class)->withTimestamps();
+    }
 }

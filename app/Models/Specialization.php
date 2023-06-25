@@ -17,4 +17,9 @@ class Specialization extends Model
         'code',
         'title',
     ];
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class)->withTimestamps();
+    }
 }

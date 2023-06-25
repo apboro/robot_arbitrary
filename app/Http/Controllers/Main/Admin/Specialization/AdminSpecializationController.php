@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Main\Admin\Specialization;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Specialization\StoreRequest;
 use App\Http\Requests\Admin\Specialization\UpdateRequest;
+use App\Interfaces\admin\specialization\AdminSpecializationInterface;
 use App\Models\Specialization;
-use Illuminate\Http\Request;
 
-class AdminSpecializationController extends Controller
+class AdminSpecializationController extends Controller implements AdminSpecializationInterface
 {
     public function index()
     {
@@ -31,7 +31,9 @@ class AdminSpecializationController extends Controller
 
     public function show(Specialization $specialization)
     {
-        return view('admin.specialization.show', compact('specialization'));
+        $groups = $specialization->groups;
+        $groupsCount = $specialization->groups()->count();
+        return view('admin.specialization.show', compact('specialization', 'groups', 'groupsCount'));
     }
 
     public function edit(Specialization $specialization)
