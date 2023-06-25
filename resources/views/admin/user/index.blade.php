@@ -29,7 +29,8 @@
         <div class="d-flex align-items-center justify-content-between border-bottom">
             <div class="user-panel d-flex align-items-center">
                 <div class="image">
-                    <img src="{{ asset('image102-10.jpg') }}" class="img-circle object-fit-contain" alt="User Image">
+                    <img src="{{ asset('preview.png') }}" class="img-circle border border-1 object-fit-contain p-1"
+                         alt="User Image">
                 </div>
                 <div class="info">
                     <div class="col-1">

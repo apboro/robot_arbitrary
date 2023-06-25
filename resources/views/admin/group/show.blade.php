@@ -7,7 +7,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('image102-10.jpg') }}"
+                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('preview.png') }}"
                              alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center">{{ $group->title }}</h3>
@@ -148,8 +148,8 @@
                                     <div class="user-panel d-flex align-items-center justify-content-between mb-2">
                                         <div class="d-flex">
                                             <div class="image">
-                                                <img src="{{ asset('image102-10.jpg') }}"
-                                                     class="img-circle object-fit-contain"
+                                                <img src="{{ asset('preview.png') }}"
+                                                     class="img-circle border border-1 object-fit-contain p-1"
                                                      alt="User Image">
                                             </div>
                                             <div class="info">

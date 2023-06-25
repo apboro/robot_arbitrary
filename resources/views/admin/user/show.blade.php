@@ -7,7 +7,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('image102-10.jpg') }}"
+                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('preview.png') }}"
                              alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center">{{ $user->surname }} {{ $user->name }} {{ $user->middleName }}</h3>
@@ -40,10 +40,6 @@
                                 </p>
                             </li>
                         @endif
-                        <li class="list-group-item">
-                            <strong><i class="fas fa-pencil-alt mr-1"></i> Специальность</strong>
-                            <p class="text-muted">09.02.07 Информация</p>
-                        </li>
                     </ul>
                     <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-block"><b>Редактировать</b></a>
                     <a href="{{ route('admin.user.index') }}" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
@@ -153,7 +149,6 @@
                                   class="form-horizontal">
                                 @csrf
                                 @forelse($userGroups as $userGroup)
-                                    <div class="border-bottom">
                                         <div class="form-group row">
                                             <label for="inputName" class="col-sm-2 col-form-label">Текущая
                                                 группа</label>
@@ -173,10 +168,10 @@
                                                        readonly>
                                             </div>
                                         </div>
-                                    </div>
                                 @empty
                                     @include('includes.no-data')
                                 @endforelse
+                                <hr>
                                 <input type="hidden" name="user_id" value="{{ $user->id }}" id="">
                                 <div class="form-group row mt-4">
                                     <label for="group_id" class="col-sm-2 col-form-label">Новая группа</label>
