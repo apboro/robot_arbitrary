@@ -21,7 +21,7 @@ class AdminItemController extends Controller
         return view('admin.item.create');
     }
 
-    public function store(StoreRequest $request, Item $item)
+    public function store(StoreRequest $request)
     {
         $data = $request->validated();
         Item::firstOrCreate(['title' => $data['title']], $data);

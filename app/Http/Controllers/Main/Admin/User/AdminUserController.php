@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Interfaces\admin\user\AdminUserInterface;
+use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller implements AdminUserInterface
@@ -37,8 +40,11 @@ class AdminUserController extends Controller implements AdminUserInterface
 
     public function show(User $user)
     {
+        $userGroups = $user->groups;
+        $groups = Group::all()->sortBy('id');
         $dateCreated = Carbon::parse($user->created_at);
-        return view('admin.user.show', compact('user', 'dateCreated'));
+
+        return view('admin.user.show', compact('user', 'dateCreated', 'groups', 'userGroups'));
     }
 
     public function edit(User $user)
