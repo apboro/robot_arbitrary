@@ -52,6 +52,12 @@
                         <p>Предметы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.specialization.index') }}" class="nav-link">
+                        <i class="fas fa-code-branch mr-2"></i>
+                        <p>Специальности <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

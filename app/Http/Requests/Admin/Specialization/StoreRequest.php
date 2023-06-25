@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\User\GroupUser;
+namespace App\Http\Requests\Admin\Specialization;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,13 +17,13 @@ class UpdateRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            'user_id' => 'required|integer|exists:users,id',
-            'group_id' => 'required|integer|exists:groups,id',
+            'code' => 'required|string',
+            'title' => 'required|string',
         ];
     }
 }
