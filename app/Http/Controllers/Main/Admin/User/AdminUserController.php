@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Main\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\Search\SearchRequest;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Interfaces\admin\user\AdminUserInterface;
+use App\Interfaces\admin\user\search\AdminUserSearchInterface;
 use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
-class AdminUserController extends Controller implements AdminUserInterface
+class AdminUserController extends Controller implements AdminUserInterface, AdminUserSearchInterface
 {
 
     public function index()
     {
-        $userCount = User::all()->count();
         $users = User::all()->sortBy('role_id');
-        return view('admin.user.index', compact('users', 'userCount'));
+        return view('admin.user.index', compact('users'));
     }
 
     public function create()
@@ -71,5 +71,18 @@ class AdminUserController extends Controller implements AdminUserInterface
     private function getWords(string $surname, string $name): string
     {
         return strtoupper($surname[0]) . strtoupper($name[0]);
+    }
+
+    public function search(SearchRequest $request)
+    {
+        $search = $request->search;
+
+        $users = User::where(function ($query) use ($search) {
+            $query->where('surname', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('middleName', 'like', "%$search%");
+        })->get();
+
+        return view('admin.user.index', compact('users'));
     }
 }

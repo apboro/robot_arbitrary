@@ -43,6 +43,7 @@ Route::group(['namespace' => 'Main'], function () {
             Route::get('/user/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.user.edit');
             Route::patch('/user/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
             Route::delete('/user/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
+            Route::get('/search', [AdminUserController::class, 'search'])->name('admin.user.search');
 
             Route::group(['namespace' => 'Password', 'prefix' => 'user/{user}/password'], function () {
                 Route::get('/edit', [AdminPasswordUserController::class, 'edit'])->name('admin.user.password.edit');
