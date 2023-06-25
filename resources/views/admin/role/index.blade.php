@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
-        <span class="fw-bolder">Управление ролями</span>
+        <span class="fw-bolder">Управление ролями <sup>{{ $roleCount }}</sup></span>
         <div><a href="{{ route('admin.role.create') }}" class="btn btn-block btn-outline-primary btn-sm"
                 data-bs-toggle="tooltip"
                 data-bs-html="true" data-bs-placement="top" title="Создать новую роль"><i class="fas fa-plus"></i>

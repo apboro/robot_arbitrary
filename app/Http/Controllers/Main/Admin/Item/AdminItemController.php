@@ -12,8 +12,9 @@ class AdminItemController extends Controller
 {
     public function index()
     {
+        $itemCount = Item::all()->count();
         $items = Item::all()->sortBy('id');
-        return view('admin.item.index', compact('items'));
+        return view('admin.item.index', compact('items', 'itemCount'));
     }
 
     public function create()

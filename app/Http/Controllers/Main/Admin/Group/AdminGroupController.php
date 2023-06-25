@@ -14,8 +14,9 @@ class AdminGroupController extends Controller implements AdminGroupInterface
 {
     public function index()
     {
+        $groupCount = Group::all()->count();
         $groups = Group::all()->sortBy('id');
-        return view('admin.group.index', compact('groups'));
+        return view('admin.group.index', compact('groups', 'groupCount'));
     }
 
     public function create()

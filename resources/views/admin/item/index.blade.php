@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
-        <span class="fw-bolder">Управление предметами</span>
+        <span class="fw-bolder">Управление предметами <sup>{{ $itemCount }}</span>
         <div class="d-flex align-items-center">
             <a href="{{ route('admin.item.create') }}" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip"
                data-bs-html="true" data-bs-placement="top" title="Добавить новый предмет"><i
