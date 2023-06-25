@@ -21,7 +21,7 @@
                             <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                             <p class="text-muted">
                                 @forelse($userGroups as $userGroup)
-                                    {{ $userGroup->title ?? 'Отсутствует' }}
+                                    {{ $userGroup->title}}
                                 @empty
                                     Отсутствует
                                 @endforelse

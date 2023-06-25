@@ -20,7 +20,7 @@
                         <li class="list-group-item">
                             <strong><i class="fas fa-users"></i> Количество студентов</strong>
                             <p class="text-muted">
-                                24
+                                {{ $group->students()->count() }}
                             </p>
                         </li>
                         <li class="list-group-item">
@@ -46,6 +46,8 @@
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#participants" data-toggle="tab">Студенты</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -136,9 +138,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane" id="participants">
+                            <div class="col-sm-10">
+                                @forelse($students as $student)
+                                    <div class="user-panel d-flex align-items-center">
+                                        <div class="image">
+                                            <img src="{{ asset('image102-10.jpg') }}"
+                                                 class="img-circle object-fit-contain"
+                                                 alt="User Image">
+                                        </div>
+                                        <div class="info">
+                                            <div class="col-1 mb-2">
+                                                <div
+                                                    class="row-1 text-dark">{{ $student->surname }} {{ $student->name }} {{ $student->middleName }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @empty
+                                    @include('includes.no-data')
+                                @endforelse
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

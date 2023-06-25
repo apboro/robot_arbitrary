@@ -33,8 +33,9 @@ class AdminGroupController extends Controller implements AdminGroupInterface
 
     public function show(Group $group)
     {
+        $students = $group->students;
         $dateCreated = Carbon::parse($group->created_at);
-        return view('admin.group.show', compact('group', 'dateCreated'));
+        return view('admin.group.show', compact('group', 'dateCreated', 'students'));
     }
 
     public function edit(Group $group)
