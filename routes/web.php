@@ -5,6 +5,7 @@ use App\Http\Controllers\Main\Admin\AdminController;
 use App\Http\Controllers\Main\Admin\Group\AdminGroupController;
 use App\Http\Controllers\Main\Admin\Item\AdminItemController;
 use App\Http\Controllers\Main\Admin\Role\RoleController;
+use App\Http\Controllers\Main\Admin\Specialization\AdminSpecializationController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Admin\User\GroupUser\AdminGroupUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
@@ -93,6 +94,16 @@ Route::group(['namespace' => 'Main'], function () {
             Route::get('/item/{item}/edit', [AdminItemController::class, 'edit'])->name('admin.item.edit');
             Route::patch('/item/{item}', [AdminItemController::class, 'update'])->name('admin.item.update');
             Route::delete('/item/{item}', [AdminItemController::class, 'destroy'])->name('admin.item.destroy');
+        });
+
+        Route::group(['namespace' => 'Specialization', 'prefix' => 'specializations'], function () {
+            Route::get('/', [AdminSpecializationController::class, 'index'])->name('admin.specialization.index');
+            Route::get('/create', [AdminSpecializationController::class, 'create'])->name('admin.specialization.create');
+            Route::post('/', [AdminSpecializationController::class, 'store'])->name('admin.specialization.store');
+            Route::get('/specialization/{specialization}', [AdminSpecializationController::class, 'show'])->name('admin.specialization.show');
+            Route::get('/specialization/{specialization}/edit', [AdminSpecializationController::class, 'edit'])->name('admin.specialization.edit');
+            Route::patch('/specialization/{specialization}', [AdminSpecializationController::class, 'update'])->name('admin.specialization.update');
+            Route::delete('/specialization/{specialization}', [AdminSpecializationController::class, 'destroy'])->name('admin.specialization.destroy');
         });
     });
 });
