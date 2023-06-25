@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// TODO: Настроить routes для авторизации и последующего редиректа
 // TODO: Add Middleware `auth`. After auth redirect to views
 Route::group(['namespace' => 'Main'], function () {
     Route::get('/', [IndexController::class, 'index'])->name('main.index');

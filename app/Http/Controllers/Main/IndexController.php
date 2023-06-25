@@ -9,6 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('main.index');
+        return view('auth.sign-in');
+//        return view('main.index');
     }
 }
