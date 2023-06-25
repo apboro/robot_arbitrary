@@ -17,25 +17,32 @@
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>
                             <p class="text-muted">{{ $dateCreated->day }} {{ $dateCreated->translatedFormat('F') }} {{ $dateCreated->year }} {{ $dateCreated->format('H:i') }}</p>
                         </li>
-                        <li class="list-group-item">
-                            <strong><i class="fas fa-book mr-1"></i> Группа</strong>
-                            <p class="text-muted">
-                                @forelse($userGroups as $userGroup)
-                                    {{ $userGroup->title}}
-                                @empty
-                                    Отсутствует
-                                @endforelse
-                            </p>
-                        </li>
+                        @if($user->role->id === \App\Models\User::ROLE_CURATOR)
+                            <li class="list-group-item">
+                                <strong><i class="fas fa-book mr-1"></i> Группа</strong>
+                                <p class="text-muted">
+                                    @forelse($curators as $curator)
+                                        {{ $curator->title}}
+                                    @empty
+                                        Отсутствует
+                                    @endforelse
+                                </p>
+                            </li>
+                        @elseif($user->role->id === \App\Models\User::ROLE_STUDENT)
+                            <li class="list-group-item">
+                                <strong><i class="fas fa-book mr-1"></i> Группа</strong>
+                                <p class="text-muted">
+                                    @forelse($userGroups as $userGroup)
+                                        {{ $userGroup->title}}
+                                    @empty
+                                        Отсутствует
+                                    @endforelse
+                                </p>
+                            </li>
+                        @endif
                         <li class="list-group-item">
                             <strong><i class="fas fa-pencil-alt mr-1"></i> Специальность</strong>
                             <p class="text-muted">09.02.07 Информация</p>
-                        </li>
-                        <li class="list-group-item">
-                            <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                                fermentum
-                                enim neque.</p>
                         </li>
                     </ul>
                     <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-block"><b>Редактировать</b></a>

@@ -11,7 +11,11 @@
                              alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center">{{ $group->title }}</h3>
-                    <p class="text-muted text-center">Тут имя куратора</p>
+                    @forelse($curators as $curator)
+                        <p class="text-muted text-center">{{ $curator->surname }} {{ $curator->name }} {{ $curator->middleName }}</p>
+                    @empty
+                        <p class="text-muted text-center">Отсутствует</p>
+                    @endforelse
                     <ul class="list-group mb-3">
                         <li class="list-group-item">
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>
@@ -30,12 +34,6 @@
                             @empty
                                 <p>Отсутствует</p>
                             @endforelse
-                        </li>
-                        <li class="list-group-item">
-                            <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                                fermentum
-                                enim neque.</p>
                         </li>
                     </ul>
                     <a href="{{ route('admin.group.edit', $group->id) }}" class="btn btn-primary btn-block"><b>Редактировать</b></a>
@@ -145,19 +143,30 @@
                         </div>
 
                         <div class="tab-pane" id="participants">
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 @forelse($students as $student)
-                                    <div class="user-panel d-flex align-items-center">
-                                        <div class="image">
-                                            <img src="{{ asset('image102-10.jpg') }}"
-                                                 class="img-circle object-fit-contain"
-                                                 alt="User Image">
-                                        </div>
-                                        <div class="info">
-                                            <div class="col-1 mb-2">
-                                                <div
-                                                    class="row-1 text-dark">{{ $student->surname }} {{ $student->name }} {{ $student->middleName }}</div>
+                                    <div class="user-panel d-flex align-items-center justify-content-between mb-2">
+                                        <div class="d-flex">
+                                            <div class="image">
+                                                <img src="{{ asset('image102-10.jpg') }}"
+                                                     class="img-circle object-fit-contain"
+                                                     alt="User Image">
                                             </div>
+                                            <div class="info">
+                                                <div class="col-1">
+                                                    <div
+                                                        class="row-1 text-dark">{{ $student->surname }} {{ $student->name }} {{ $student->middleName }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <a href="{{ route('admin.user.show', $student->id) }}"
+                                               class="btn btn-light mx-1"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-html="true" data-bs-placement="top"
+                                               title="Просмотреть информацию о пользователе">
+                                                <i class="fas fa-id-badge"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 @empty
@@ -167,20 +176,19 @@
                         </div>
 
                         <div class="tab-pane" id="settings">
+                            <h3 class="text-secondary mb-3">Специальность</h3>
                             <form action="{{ route('admin.user.specialization.store', $group->id) }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
                                 @forelse($groupSpecializations as $groupSpecialization)
-                                    <div class="border-bottom mb-3">
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Текущая
-                                                специальность</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control"
-                                                       value="{{ $groupSpecialization->code  ?? '' }} {{ $groupSpecialization->title  ?? '' }}"
-                                                       id="inputName"
-                                                       readonly>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Текущая
+                                            специальность</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"
+                                                   value="{{ $groupSpecialization->code  ?? '' }} {{ $groupSpecialization->title  ?? '' }}"
+                                                   id="inputName"
+                                                   readonly>
                                         </div>
                                     </div>
                                 @empty
@@ -193,6 +201,42 @@
                                             @foreach($specializations as $specialization)
                                                 <option
                                                     value="{{ $specialization->id }}">{{ $specialization->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Применить</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr>
+                            <h3 class="text-secondary mb-3">Куратор</h3>
+                            <form action="{{ route('admin.user.curator.store', $group->id) }}" method="POST"
+                                  class="form-horizontal">
+                                @csrf
+                                @forelse($curators as $curator)
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Текущий куратор</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"
+                                                   value="{{ $curator->surname  ?? '' }} {{ $curator->name  ?? '' }} {{ $curator->middleName  ?? '' }}"
+                                                   id="inputName"
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                @empty
+                                    @include('includes.no-data')
+                                @endforelse
+                                <div class="form-group row">
+                                    <label for="user_id" class="col-sm-2 col-form-label">Куратор</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" id="user_id" name="user_id">
+                                            @foreach($teachers as $teacher)
+                                                <option
+                                                    value="{{ $teacher->id }}">{{ $teacher->surname }} {{ $teacher->name }} {{ $teacher->middleName }}</option>
                                             @endforeach
                                         </select>
                                     </div>
