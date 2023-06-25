@@ -16,7 +16,7 @@
                         <li class="list-group-item">
                             <strong><i class="fas fa-users"></i> Количество групп</strong>
                             <p class="text-muted">
-                                1
+                                {{ $groupsCount }}
                             </p>
                         </li>
                     </ul>
@@ -40,20 +40,18 @@
                         <div class="active tab-pane" id="activity">
 
                             <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm"
-                                         src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="user image">
-                                    <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                                    <span class="description">Shared publicly - 7:30 PM today</span>
+                                <div class="info">
+                                    <div class="col-12">
+                                        @forelse($groups as $group)
+                                            <div class="col-12">
+                                                <h5><i class="fas fa-info"></i> {{ $group->title }}</h5>
+                                                <p>Куратор</p>
+                                            </div>
+                                        @empty
+                                            @include('includes.no-data')
+                                        @endforelse
+                                    </div>
                                 </div>
-
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
                             </div>
                         </div>
                     </div>

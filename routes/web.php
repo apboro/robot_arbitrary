@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\Admin\AdminController;
 use App\Http\Controllers\Main\Admin\Group\AdminGroupController;
+use App\Http\Controllers\Main\Admin\Group\Specialization\AdminGroupSpecializationController;
 use App\Http\Controllers\Main\Admin\Item\AdminItemController;
 use App\Http\Controllers\Main\Admin\Role\RoleController;
 use App\Http\Controllers\Main\Admin\Specialization\AdminSpecializationController;
@@ -84,6 +85,10 @@ Route::group(['namespace' => 'Main'], function () {
             Route::get('/group/{group}/edit', [AdminGroupController::class, 'edit'])->name('admin.group.edit');
             Route::patch('/group/{group}', [AdminGroupController::class, 'update'])->name('admin.group.update');
             Route::delete('/group/{group}', [AdminGroupController::class, 'destroy'])->name('admin.group.destroy');
+
+            Route::group(['namespace' => 'Specialization', 'prefix' => '{group}/specialization'], function () {
+                Route::post('/', [AdminGroupSpecializationController::class, 'store'])->name('admin.user.specialization.store');
+            });
         });
 
         Route::group(['namespace' => 'Item', 'prefix' => 'items'], function () {

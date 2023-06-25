@@ -25,7 +25,11 @@
                         </li>
                         <li class="list-group-item">
                             <strong><i class="fas fa-pencil-alt mr-1"></i> Специальность</strong>
-                            <p class="text-muted">09.02.07 Информация</p>
+                            @forelse($groupSpecializations as $groupSpecialization)
+                                <p class="text-muted">{{ $groupSpecialization->code }} {{ $groupSpecialization->title }}</p>
+                            @empty
+                                <p>Отсутствует</p>
+                            @endforelse
                         </li>
                         <li class="list-group-item">
                             <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
@@ -48,6 +52,7 @@
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
                         <li class="nav-item"><a class="nav-link" href="#participants" data-toggle="tab">Студенты</a>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -138,6 +143,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="tab-pane" id="participants">
                             <div class="col-sm-10">
                                 @forelse($students as $student)
@@ -159,6 +165,47 @@
                                 @endforelse
                             </div>
                         </div>
+
+                        <div class="tab-pane" id="settings">
+                            <form action="{{ route('admin.user.specialization.store', $group->id) }}" method="POST"
+                                  class="form-horizontal">
+                                @csrf
+                                @forelse($groupSpecializations as $groupSpecialization)
+                                    <div class="border-bottom mb-3">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Текущая
+                                                специальность</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control"
+                                                       value="{{ $groupSpecialization->code  ?? '' }} {{ $groupSpecialization->title  ?? '' }}"
+                                                       id="inputName"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @empty
+                                    @include('includes.no-data')
+                                @endforelse
+                                <div class="form-group row">
+                                    <label for="specialization_id" class="col-sm-2 col-form-label">Специальность</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" id="specialization_id" name="specialization_id">
+                                            @foreach($specializations as $specialization)
+                                                <option
+                                                    value="{{ $specialization->id }}">{{ $specialization->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Применить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>

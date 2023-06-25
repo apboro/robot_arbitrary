@@ -151,7 +151,7 @@
                                             <label for="inputName" class="col-sm-2 col-form-label">Текущая
                                                 группа</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control"
+                                                <input type="text" class="form-control"
                                                        value="{{ $userGroup->title ?? 'Отсутствует' }}" id="inputName"
                                                        readonly>
                                             </div>
