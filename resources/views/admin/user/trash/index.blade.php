@@ -11,9 +11,10 @@
             <a href="" class="btn btn-outline-primary ml-2 btn-sm" data-bs-toggle="tooltip"
                data-bs-html="true" data-bs-placement="top" title="Импортировать данные из .xlsx файла"><i
                     class="fas fa-file-import mr-1"></i> Импорт</a>
-            <a href="" class="btn btn-outline-danger ml-2 btn-sm" data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Работа с пользователями которые были удалены"><i
-                    class="fas fa-user-times mr-1"></i> Удаленные</a>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-outline-primary ml-2 btn-sm"
+               data-bs-toggle="tooltip"
+               data-bs-html="true" data-bs-placement="top" title="Пользователи"><i class="fas fa-users"></i>
+                Пользователи</a>
             <form action="" class="form-horizontal ml-2">
                 <div class="d-flex">
                     <input type="search" name="" id="" class="form-control" placeholder="Поиск...">
