@@ -14,6 +14,7 @@ use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Main\Profile\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// TODO: Using Policy for view fields
 // TODO: Add Middleware `auth`. After auth redirect to views
 Route::group(['namespace' => 'Main'], function () {
     Route::get('/', [IndexController::class, 'index'])->name('main.index');
@@ -115,6 +117,10 @@ Route::group(['namespace' => 'Main'], function () {
             Route::patch('/specialization/{specialization}', [AdminSpecializationController::class, 'update'])->name('admin.specialization.update');
             Route::delete('/specialization/{specialization}', [AdminSpecializationController::class, 'destroy'])->name('admin.specialization.destroy');
         });
+    });
+
+    Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     });
 });
 

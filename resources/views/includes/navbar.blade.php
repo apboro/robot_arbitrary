@@ -9,7 +9,8 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item mr-2">
-                <a href="" class="btn btn-outline-dark"><i class="fas fa-user-alt"></i> Профиль</a>
+                <a href="{{ route('profile.index') }}" class="btn btn-outline-dark"><i class="fas fa-user-alt"></i>
+                    Профиль</a>
             </li>
             <li class="nav-item">
                 <form action="" method="post">
