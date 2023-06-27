@@ -10,21 +10,36 @@
                         <img class="profile-user-img img-fluid img-circle" src="{{ asset('preview.png') }}"
                              alt="User profile picture">
                     </div>
-                    <h3 class="profile-username text-center">Мещеряков Лев Валерьевич</h3>
-                    <p class="text-muted text-center">Отсутствует</p>
+                    <h3 class="profile-username text-center">{{ auth()->user()->surname }} {{ auth()->user()->name }} {{ auth()->user()->middleName }}</h3>
+                    <p class="text-muted text-center">@include('includes.get-role-auth')</p>
                     <ul class="list-group mb-3">
                         <li class="list-group-item">
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>
-                            <p class="text-muted">12312321</p>
+                            <p class="text-muted">{{ $dateCreated->day }} {{ $dateCreated->translatedFormat('F') }} {{ $dateCreated->year }} {{ $dateCreated->format('H:i') }}</p>
                         </li>
-                        <li class="list-group-item">
-                            <strong><i class="fas fa-users"></i> Студент группы</strong>
-                            <p class="text-muted">12312321</p>
-                        </li>
-                        <li class="list-group-item">
-                            <strong><i class="fas fa-clock"></i> Куратор группы</strong>
-                            <p class="text-muted">12312321</p>
-                        </li>
+                        @if(auth()->user()->role->id === \App\Models\User::ROLE_CURATOR)
+                            <li class="list-group-item">
+                                <strong><i class="fas fa-book mr-1"></i>Куратор группы</strong>
+                                <p class="text-muted">
+                                    @forelse($curators as $curator)
+                                        {{ $curator->title}}
+                                    @empty
+                                        Отсутствует
+                                    @endforelse
+                                </p>
+                            </li>
+                        @elseif(auth()->user()->role->id === \App\Models\User::ROLE_STUDENT)
+                            <li class="list-group-item">
+                                <strong><i class="fas fa-book mr-1"></i> Группа</strong>
+                                <p class="text-muted">
+                                    @forelse($groups as $group)
+                                        {{ $group->title}}
+                                    @empty
+                                        Отсутствует
+                                    @endforelse
+                                </p>
+                            </li>
+                        @endif
                     </ul>
                     <a href="{{ route('main.index') }}" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
                 </div>
@@ -52,28 +67,32 @@
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Фамилия</label>
                                     <div class="col-sm-10 w-25">
-                                        <input type="text" class="form-control-plaintext" value="feio" id="user_family"
+                                        <input type="text" class="form-control-plaintext"
+                                               value="{{ auth()->user()->surname }}" id="user_family"
                                                readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Имя</label>
                                     <div class="col-sm-10 w-25">
-                                        <input type="text" class="form-control-plaintext" value="efo" id="user_family"
+                                        <input type="text" class="form-control-plaintext"
+                                               value="{{ auth()->user()->name }}" id="user_family"
                                                readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Отчество</label>
                                     <div class="col-sm-10 w-25">
-                                        <input type="text" class="form-control-plaintext" value="bvbn" id="user_family"
+                                        <input type="text" class="form-control-plaintext"
+                                               value="{{ auth()->user()->middleName }}" id="user_family"
                                                readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Логин</label>
                                     <div class="col-sm-10 w-25">
-                                        <input type="text" class="form-control-plaintext" value="bvbn" id="user_family"
+                                        <input type="text" class="form-control-plaintext"
+                                               value="{{ auth()->user()->login }}" id="user_family"
                                                readonly>
                                     </div>
                                 </div>
@@ -155,19 +174,22 @@
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Фамилия</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="feio" id="user_family">
+                                        <input type="text" class="form-control" value="{{ auth()->user()->surname }}"
+                                               id="user_family">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Имя</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="efo" id="user_family">
+                                        <input type="text" class="form-control" value="{{ auth()->user()->name }}"
+                                               id="user_family">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Отчество</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="bvbn" id="user_family">
+                                        <input type="text" class="form-control" value="{{ auth()->user()->middleName }}"
+                                               id="user_family">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -184,7 +206,8 @@
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Логин</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control-plaintext" value="bvbn" id="user_family"
+                                        <input type="text" class="form-control-plaintext"
+                                               value="{{ auth()->user()->login }}" id="user_family"
                                                aria-describedby="loginHelp" readonly>
                                         <div id="loginHelp" class="form-text text-danger">Логин уникальное значение.
                                             Изменить нельзя
@@ -194,7 +217,7 @@
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Пароль</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="bvbn" id="user_family"
+                                        <input type="password" class="form-control" value="" id="user_family"
                                                aria-describedby="loginHelp">
                                         <div id="loginHelp" class="form-text text-success">Вы можете изменить пароль.
                                             Минимум 7 символов
