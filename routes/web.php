@@ -14,6 +14,7 @@ use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Main\Profile\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -117,6 +118,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::patch('/specialization/{specialization}', [AdminSpecializationController::class, 'update'])->name('admin.specialization.update');
             Route::delete('/specialization/{specialization}', [AdminSpecializationController::class, 'destroy'])->name('admin.specialization.destroy');
         });
+    });
+
+    Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     });
 });
 
