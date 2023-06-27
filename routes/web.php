@@ -38,8 +38,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
     Route::get('/', [IndexController::class, 'index'])->name('main.index');
 
-    // TODO: Add Middleware `admin`.
-    Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
         Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
