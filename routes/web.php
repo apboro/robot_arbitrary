@@ -130,6 +130,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     Route::group(['namespace' => 'Curator', 'prefix' => 'curator'], function () {
         Route::get('/', [CuratorController::class, 'index'])->name('curator.index');
         Route::get('/student/{user}', [CuratorController::class, 'show'])->name('curator.show');
+        Route::delete('/student/{user}', [CuratorController::class, 'destroy'])->name('curator.destroy');
     });
 });
 

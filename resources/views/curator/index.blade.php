@@ -4,7 +4,7 @@
 @section('content')
     <!-- Small boxes (Stat box) -->
     <div class="d-flex">
-        <div class="col-md-4 col-sm-6 col-12">
+        <div class="col-md-6 col-sm-6 col-12">
             <div class="info-box">
                 <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
                 <div class="info-box-content">
@@ -15,18 +15,7 @@
             </div>
 
         </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Докладные</span>
-                    <span class="info-box-number">1,410</span>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
+        <div class="col-md-6 col-sm-6 col-12">
             <div class="info-box">
                 <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
                 <div class="info-box-content">
@@ -38,7 +27,7 @@
         <!-- /.row -->
     </div>
     @foreach($groups as $group)
-        @foreach($group->students as $student)
+        @forelse($group->students as $student)
             <div class="d-flex align-items-center justify-content-between border-bottom">
                 <div class="user-panel d-flex align-items-center">
                     <div class="image">
@@ -61,9 +50,11 @@
                            title="Просмотреть информацию о пользователе">
                             <i class="fas fa-id-badge"></i>
                         </a>
-                        <form action="" method="POST">
+                        <form action="{{ route('curator.destroy', $student->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
+                            <input type="hidden" name="user_id" value="{{ $student->id }}">
+                            <input type="hidden" name="group_id" value="{{ $group->id }}">
                             <button type="submit" class="btn btn-light ml-1" data-bs-toggle="tooltip"
                                     data-bs-html="true" data-bs-placement="top" title="Отчислить"><i
                                     class="fas fa-stop-circle text-danger"></i>
@@ -72,6 +63,8 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            @include('includes.no-data')
+        @endforelse
     @endforeach
 @endsection
