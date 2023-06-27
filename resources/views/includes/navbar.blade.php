@@ -13,7 +13,8 @@
                     Профиль</a>
             </li>
             <li class="nav-item">
-                <form action="" method="post">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
                     <button type="submit" class="btn btn-outline-dark"><i class="fas fa-sign-out-alt"></i> Выйти
                     </button>
                 </form>
