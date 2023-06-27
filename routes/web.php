@@ -123,8 +123,8 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
     Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-        Route::patch('/{user}', [ProfileController::class, 'update'])->name('profile.update');
-        Route::patch('/{user}/password', [ProfileController::class, 'password'])->name('profile.password');
+        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
+        Route::patch('/password', [ProfileController::class, 'password'])->name('profile.password');
     });
 });
 

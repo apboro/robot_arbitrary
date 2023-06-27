@@ -168,7 +168,7 @@
 
                         <div class="tab-pane" id="participants">
                             <h3 class="text-secondary mb-3">Персональные данные</h3>
-                            <form action="{{ route('profile.update', auth()->user()->id) }}" method="POST"
+                            <form action="{{ route('profile.update') }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
                                 @method('patch')
@@ -204,7 +204,7 @@
                             </form>
                             <hr>
                             <h3 class="text-secondary mb-3">Учетные данные</h3>
-                            <form action="{{ route('profile.password', auth()->user()->id) }}" method="POST"
+                            <form action="{{ route('profile.password') }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
                                 @method('patch')
