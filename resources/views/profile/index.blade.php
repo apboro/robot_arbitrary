@@ -168,27 +168,31 @@
 
                         <div class="tab-pane" id="participants">
                             <h3 class="text-secondary mb-3">Персональные данные</h3>
-                            <form action="" method="POST"
+                            <form action="{{ route('profile.update') }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
+                                @method('patch')
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Фамилия</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="{{ auth()->user()->surname }}"
+                                        <input type="text" class="form-control" name="surname"
+                                               value="{{ auth()->user()->surname }}"
                                                id="user_family">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Имя</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="{{ auth()->user()->name }}"
+                                        <input type="text" class="form-control" name="name"
+                                               value="{{ auth()->user()->name }}"
                                                id="user_family">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Отчество</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="text" class="form-control" value="{{ auth()->user()->middleName }}"
+                                        <input type="text" class="form-control" name="middleName"
+                                               value="{{ auth()->user()->middleName }}"
                                                id="user_family">
                                     </div>
                                 </div>
@@ -200,9 +204,10 @@
                             </form>
                             <hr>
                             <h3 class="text-secondary mb-3">Учетные данные</h3>
-                            <form action="" method="POST"
+                            <form action="{{ route('profile.password') }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
+                                @method('patch')
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Логин</label>
                                     <div class="col-sm-10 w-50">
@@ -217,11 +222,14 @@
                                 <div class="form-group row">
                                     <label for="user_family" class="col-sm-2 col-form-label">Пароль</label>
                                     <div class="col-sm-10 w-50">
-                                        <input type="password" class="form-control" value="" id="user_family"
+                                        <input type="password" class="form-control" name="password" id="user_family"
                                                aria-describedby="loginHelp">
                                         <div id="loginHelp" class="form-text text-success">Вы можете изменить пароль.
                                             Минимум 7 символов
                                         </div>
+                                        @error('password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
