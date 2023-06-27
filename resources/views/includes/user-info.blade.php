@@ -5,8 +5,18 @@
     </div>
     <div class="info">
         <div class="col-1">
-            <div class="row-1 text-white">Мещеряков Лев</div>
-            <div class="row-1"><span class="badge bg-danger">Администратор</span></div>
+            <div class="row-1 text-white">{{ auth()->user()->surname }} {{ auth()->user()->name }}</div>
+            <div class="row-1">
+                <span
+                    @class([
+                        'badge text-bg-danger' => auth()->user()->role->id === \App\Models\User::ROLE_ADMIN,
+                        'badge text-bg-primary' =>auth()->user()->role->id === \App\Models\User::ROLE_TEACHER,
+                        'badge text-bg-info' => auth()->user()->role->id === \App\Models\User::ROLE_STUDENT,
+                        'badge text-bg-warning' => auth()->user()->role->id === \App\Models\User::ROLE_CURATOR,
+                        'badge text-bg-success' => auth()->user()->role->id === \App\Models\User::ROLE_ROBOT,
+                    ])>{{ auth()->user()->role->title }}
+                </span>
+            </div>
         </div>
     </div>
 </div>

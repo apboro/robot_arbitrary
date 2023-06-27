@@ -28,10 +28,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [MainController::class, 'index'])->name('home');
 
-// TODO: Add Middleware `auth`. After auth redirect to views
-Route::group(['namespace' => 'Main'], function () {
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
+
+Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth'], function () {
+
     Route::get('/', [IndexController::class, 'index'])->name('main.index');
 
     // TODO: Add Middleware `admin`.
