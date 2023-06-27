@@ -9,7 +9,9 @@
                 <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Студенты</span>
-                    <span class="info-box-number">1,410</span>
+                    @foreach($groups as $group)
+                        <span class="info-box-number">{{ $group->students()->count() }}</span>
+                    @endforeach
                 </div>
 
             </div>
@@ -24,7 +26,10 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
+    </div>
+    <!-- /.row -->
+    <div class="d-flex align-items-center pr-2 mb-3">
+        <span class="fw-bolder">Ваша группа</span>
     </div>
     @foreach($groups as $group)
         @forelse($group->students as $student)

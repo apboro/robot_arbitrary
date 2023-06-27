@@ -33,8 +33,7 @@
                     <ul class="nav nav-pills">
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#documents" data-toggle="tab">Документы</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -55,6 +54,11 @@
                                     tools to help create filler text for everyone from bacon lovers
                                     to Charlie Sheen fans.
                                 </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="documents">
+                            <div class="post">
+                                123
                             </div>
                         </div>
                     </div>

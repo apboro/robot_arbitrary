@@ -14,6 +14,7 @@ use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\Curator\CuratorController;
+use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -127,10 +128,14 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::patch('/password', [ProfileController::class, 'password'])->name('profile.password');
     });
 
-    Route::group(['namespace' => 'Curator', 'prefix' => 'curator'], function () {
+    Route::group(['namespace' => 'Curator', 'prefix' => 'curator', 'middleware' => 'curator'], function () {
         Route::get('/', [CuratorController::class, 'index'])->name('curator.index');
         Route::get('/student/{user}', [CuratorController::class, 'show'])->name('curator.show');
         Route::delete('/student/{user}', [CuratorController::class, 'destroy'])->name('curator.destroy');
+
+        Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
+            Route::get('/', [CuratorProfileController::class, 'index'])->name('curator.profile.index');
+        });
     });
 });
 

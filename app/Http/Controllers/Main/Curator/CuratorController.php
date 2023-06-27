@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Main\Curator;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Curator\Search\SearchRequest;
 use App\Http\Requests\Curator\Student\StoreRequest;
 use App\Models\Group;
-use App\Models\Item;
 use App\Models\User;
 
 class CuratorController extends Controller
