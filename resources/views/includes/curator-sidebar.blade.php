@@ -23,15 +23,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-cog mr-2"></i>
-                        <p>Администрирование <i class="fas fa-angle-right right"></i></p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('curator.index') }}" class="nav-link">
                         <i class="fas fa-wrench mr-2"></i>
                         <p>Управление группой <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link">
+                        <i class="fas fa-users-cog mr-2"></i>
+                        <p>Студенты <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
             </ul>

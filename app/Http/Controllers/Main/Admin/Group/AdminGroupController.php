@@ -37,7 +37,7 @@ class AdminGroupController extends Controller implements AdminGroupInterface
     public function show(Group $group)
     {
         $curators = $group->curators;
-        $teachers = User::where('role_id', User::ROLE_TEACHER)->get();
+        $teachers = User::where('role_id', User::ROLE_CURATOR)->get();
         $specializations = Specialization::all()->sortBy('id');
         $groupSpecializations = $group->specializations;
         $students = $group->students;

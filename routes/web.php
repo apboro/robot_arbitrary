@@ -13,6 +13,7 @@ use App\Http\Controllers\Main\Admin\User\GroupUser\AdminGroupUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
+use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -124,6 +125,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::patch('/password', [ProfileController::class, 'password'])->name('profile.password');
+    });
+
+    Route::group(['namespace' => 'Curator', 'prefix' => 'curator'], function () {
+        Route::get('/', [CuratorController::class, 'index'])->name('curator.index');
     });
 });
 
