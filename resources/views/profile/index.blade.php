@@ -10,7 +10,7 @@
                         <img class="profile-user-img img-fluid img-circle" src="{{ asset('preview.png') }}"
                              alt="User profile picture">
                     </div>
-                    <h3 class="profile-username text-center">reher</h3>
+                    <h3 class="profile-username text-center">Мещеряков Лев Валерьевич</h3>
                     <p class="text-muted text-center">Отсутствует</p>
                     <ul class="list-group mb-3">
                         <li class="list-group-item">
@@ -18,18 +18,15 @@
                             <p class="text-muted">12312321</p>
                         </li>
                         <li class="list-group-item">
-                            <strong><i class="fas fa-users"></i> Количество студентов</strong>
-                            <p class="text-muted">
-                                233
-                            </p>
+                            <strong><i class="fas fa-users"></i> Студент группы</strong>
+                            <p class="text-muted">12312321</p>
                         </li>
                         <li class="list-group-item">
-                            <strong><i class="fas fa-pencil-alt mr-1"></i> Специальность</strong>
-                            <p>Отсутствует</p>
+                            <strong><i class="fas fa-clock"></i> Куратор группы</strong>
+                            <p class="text-muted">12312321</p>
                         </li>
                     </ul>
-                    <a href="" class="btn btn-primary btn-block"><b>Редактировать</b></a>
-                    <a href="" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
+                    <a href="{{ route('main.index') }}" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
                 </div>
             </div>
         </div>
@@ -37,34 +34,50 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Данные</a>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="#participants" data-toggle="tab">Действия</a>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#participants" data-toggle="tab">Студенты</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
 
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm"
-                                         src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="user image">
-                                    <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                                    <span class="description">Shared publicly - 7:30 PM today</span>
+                            <h3 class="text-secondary mb-3">Профиль пользователя</h3>
+                            <form action="" method="POST"
+                                  class="form-horizontal">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Фамилия</label>
+                                    <div class="col-sm-10 w-25">
+                                        <input type="text" class="form-control-plaintext" value="feio" id="user_family"
+                                               readonly>
+                                    </div>
                                 </div>
-
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
-                            </div>
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Имя</label>
+                                    <div class="col-sm-10 w-25">
+                                        <input type="text" class="form-control-plaintext" value="efo" id="user_family"
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Отчество</label>
+                                    <div class="col-sm-10 w-25">
+                                        <input type="text" class="form-control-plaintext" value="bvbn" id="user_family"
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Логин</label>
+                                    <div class="col-sm-10 w-25">
+                                        <input type="text" class="form-control-plaintext" value="bvbn" id="user_family"
+                                               readonly>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
                         <div class="tab-pane" id="timeline">
@@ -135,45 +148,27 @@
                         </div>
 
                         <div class="tab-pane" id="participants">
-                            <div class="col-sm-6">
-                                <div class="user-panel d-flex align-items-center justify-content-between mb-2">
-                                    <div class="d-flex">
-                                        <div class="image">
-                                            <img src="{{ asset('preview.png') }}"
-                                                 class="img-circle border border-1 object-fit-contain p-1"
-                                                 alt="User Image">
-                                        </div>
-                                        <div class="info">
-                                            <div class="col-1">
-                                                <div
-                                                    class="row-1 text-dark">Какой-то текст
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <a href=""
-                                           class="btn btn-light mx-1"
-                                           data-bs-toggle="tooltip"
-                                           data-bs-html="true" data-bs-placement="top"
-                                           title="Просмотреть информацию о пользователе">
-                                            <i class="fas fa-id-badge"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="settings">
-                            <h3 class="text-secondary mb-3">Специальность</h3>
+                            <h3 class="text-secondary mb-3">Персональные данные</h3>
                             <form action="" method="POST"
                                   class="form-horizontal">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="specialization_id" class="col-sm-2 col-form-label">Специальность</label>
-                                    <div class="col-sm-10">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Фамилия</label>
+                                    <div class="col-sm-10 w-50">
+                                        <input type="text" class="form-control" value="feio" id="user_family">
                                     </div>
-                                    <input type="hidden" name="group_id" value="">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Имя</label>
+                                    <div class="col-sm-10 w-50">
+                                        <input type="text" class="form-control" value="efo" id="user_family">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Отчество</label>
+                                    <div class="col-sm-10 w-50">
+                                        <input type="text" class="form-control" value="bvbn" id="user_family">
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
@@ -182,13 +177,29 @@
                                 </div>
                             </form>
                             <hr>
-                            <h3 class="text-secondary mb-3">Куратор</h3>
+                            <h3 class="text-secondary mb-3">Учетные данные</h3>
                             <form action="" method="POST"
                                   class="form-horizontal">
-
+                                @csrf
                                 <div class="form-group row">
-                                    <label for="user_id" class="col-sm-2 col-form-label">Куратор</label>
-                                    <input type="hidden" name="group_id" value="=">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Логин</label>
+                                    <div class="col-sm-10 w-50">
+                                        <input type="text" class="form-control-plaintext" value="bvbn" id="user_family"
+                                               aria-describedby="loginHelp" readonly>
+                                        <div id="loginHelp" class="form-text text-danger">Логин уникальное значение.
+                                            Изменить нельзя
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="user_family" class="col-sm-2 col-form-label">Пароль</label>
+                                    <div class="col-sm-10 w-50">
+                                        <input type="text" class="form-control" value="bvbn" id="user_family"
+                                               aria-describedby="loginHelp">
+                                        <div id="loginHelp" class="form-text text-success">Вы можете изменить пароль.
+                                            Минимум 7 символов
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
@@ -197,7 +208,6 @@
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
