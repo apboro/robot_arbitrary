@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="tab-pane" id="participants">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 @forelse($students as $student)
                                     <div class="user-panel d-flex align-items-center justify-content-between mb-2">
                                         <div class="d-flex">

@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// TODO: Using Policy for view fields
 //Route::get('/home', [MainController::class, 'index'])->name('home');
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
