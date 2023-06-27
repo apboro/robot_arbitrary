@@ -55,33 +55,28 @@
                 </div>
                 <div class="info p-2">
                     <div class="d-flex gx-5">
-                        <a href="{{ route('admin.user.show', $student->id) }}" class="btn btn-light mx-1"
+                        <a href="" class="btn btn-light mx-1"
                            data-bs-toggle="tooltip"
                            data-bs-html="true" data-bs-placement="top"
                            title="Просмотреть информацию о пользователе">
                             <i class="fas fa-id-badge"></i>
                         </a>
-                        <a href="{{ route('admin.user.edit', $student->id) }}" class="btn btn-light mx-1"
+                        <a href="" class="btn btn-light mx-1"
                            data-bs-toggle="tooltip"
                            data-bs-html="true" data-bs-placement="top" title="Редактировать">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{{ route('admin.user.role.edit', $student->id) }}" class="btn btn-light mx-1"
+                        <a href="" class="btn btn-light mx-1"
                            data-bs-toggle="tooltip"
-                           data-bs-html="true" data-bs-placement="top" title="Изменить роль">
-                            <i class="fas fa-user-tag"></i>
+                           data-bs-html="true" data-bs-placement="top" title="Перевести в другую группу">
+                            <i class="fas fa-exchange-alt"></i>
                         </a>
-                        <a href="{{ route('admin.user.password.edit', $student->id) }}" class="btn btn-light mx-1"
-                           data-bs-toggle="tooltip"
-                           data-bs-html="true" data-bs-placement="top" title="Обновить пароль">
-                            <i class="fas fa-fingerprint"></i>
-                        </a>
-                        <form action="{{ route('admin.user.destroy', $student->id) }}" method="POST">
+                        <form action="" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-light ml-1" data-bs-toggle="tooltip"
-                                    data-bs-html="true" data-bs-placement="top" title="Удалить"><i
-                                    class="fas fa-trash-alt text-danger"></i></button>
+                                    data-bs-html="true" data-bs-placement="top" title="Отчислить"><i
+                                    class="fas fa-stop-circle text-danger"></i></button>
                         </form>
                     </div>
                 </div>
