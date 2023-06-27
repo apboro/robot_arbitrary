@@ -19,6 +19,7 @@ class CuratorController extends Controller
 
     public function show(User $user)
     {
-        return view('curator.show', compact('user'));
+        $groups = $user->groups;
+        return view('curator.show', compact('user', 'groups'));
     }
 }

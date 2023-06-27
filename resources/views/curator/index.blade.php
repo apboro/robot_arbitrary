@@ -55,28 +55,19 @@
                 </div>
                 <div class="info p-2">
                     <div class="d-flex gx-5">
-                        <a href="" class="btn btn-light mx-1"
+                        <a href="{{ route('curator.show', $student->id) }}" class="btn btn-light mx-1"
                            data-bs-toggle="tooltip"
                            data-bs-html="true" data-bs-placement="top"
                            title="Просмотреть информацию о пользователе">
                             <i class="fas fa-id-badge"></i>
-                        </a>
-                        <a href="" class="btn btn-light mx-1"
-                           data-bs-toggle="tooltip"
-                           data-bs-html="true" data-bs-placement="top" title="Редактировать">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="" class="btn btn-light mx-1"
-                           data-bs-toggle="tooltip"
-                           data-bs-html="true" data-bs-placement="top" title="Перевести в другую группу">
-                            <i class="fas fa-exchange-alt"></i>
                         </a>
                         <form action="" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-light ml-1" data-bs-toggle="tooltip"
                                     data-bs-html="true" data-bs-placement="top" title="Отчислить"><i
-                                    class="fas fa-stop-circle text-danger"></i></button>
+                                    class="fas fa-stop-circle text-danger"></i>
+                            </button>
                         </form>
                     </div>
                 </div>

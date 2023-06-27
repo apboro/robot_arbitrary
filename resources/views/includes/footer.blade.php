@@ -2,6 +2,6 @@
     <strong>ФКПОУ "КТИ" Минтруда России &copy; 2023.</strong>
     Все права защищены.
     <div class="float-right d-none d-sm-inline-block">
-        <b>Версия</b> 0.4.1
+        <b>Версия</b> 0.4.2
     </div>
 </footer>
