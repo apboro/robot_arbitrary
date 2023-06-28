@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Main\Curator;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Curator\Search\SearchRequest;
 use App\Http\Requests\Curator\Student\StoreRequest;
-use App\Models\Group;
 use App\Models\User;
 
 class CuratorController extends Controller
@@ -31,4 +29,7 @@ class CuratorController extends Controller
 
         return redirect()->route('curator.index');
     }
+
+    // Поиск и формирование списка групп для вывода данных для отправки рапортичики.
+    // Сначала сделай find() группы потом через связи получи список студентов и уже выводи данные
 }
