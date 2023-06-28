@@ -17,7 +17,7 @@
                     class="fas fa-user-times mr-1"></i> Удаленные</a>
             <form action="{{ route('admin.user.search') }}" method="GET" class="form-horizontal ml-2">
                 <div class="d-flex">
-                    <input type="search" name="search" value="{{ isset($search) ?? '' }}" class="form-control"
+                    <input type="search" name="search" value="" class="form-control"
                            placeholder="Поиск...">
                     <input type="submit" class="btn btn-light border border-1 ml-1" value="Найти">
                     <a href="{{ route('admin.user.index') }}" class="btn btn-light border border-1 ml-1">Сбросить</a>

@@ -32,7 +32,7 @@
                 @csrf
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
-                        <h2>Здравствуйте, еще раз</h2>
+                        <h2>Здравствуйте еще раз</h2>
                         <p>Введите свои учетные данные и вперед!</p>
                     </div>
                     <div class="input-group mb-3">
