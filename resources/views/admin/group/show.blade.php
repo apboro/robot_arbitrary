@@ -192,7 +192,9 @@
                                         </div>
                                     </div>
                                 @empty
-                                    @include('includes.no-data')
+                                    <div class="mb-2">
+                                        @include('includes.no-data')
+                                    </div>
                                 @endforelse
                                 <div class="form-group row">
                                     <label for="specialization_id" class="col-sm-2 col-form-label">Специальность</label>
@@ -228,7 +230,9 @@
                                         </div>
                                     </div>
                                 @empty
-                                    @include('includes.no-data')
+                                    <div class="mb-2">
+                                        @include('includes.no-data')
+                                    </div>
                                 @endforelse
                                 <div class="form-group row">
                                     <label for="user_id" class="col-sm-2 col-form-label">Куратор</label>

@@ -13,7 +13,6 @@ use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 
 class AdminUserController extends Controller implements AdminUserInterface, AdminUserSearchInterface
 {
