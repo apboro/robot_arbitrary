@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Выберите студента для подачи докладной</span>
         <div class="d-flex align-items-center">
-            <form action="" method="GET" class="form-horizontal ml-2">
+            <form action="{{ route('claim.search') }}" method="GET" class="form-horizontal ml-2">
                 <div class="d-flex">
                     <input type="search" name="search" value="" class="form-control"
                            placeholder="Поиск...">
@@ -15,7 +15,7 @@
             </form>
         </div>
     </div>
-    @foreach($users as $user)
+    @forelse($users as $user)
         <div class="d-flex align-items-center justify-content-between border-bottom">
             <div class="user-panel d-flex align-items-center">
                 <div class="image">
@@ -41,5 +41,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        @include('includes.no-data')
+    @endforelse
 @endsection
