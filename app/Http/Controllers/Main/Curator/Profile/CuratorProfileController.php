@@ -12,6 +12,10 @@ class CuratorProfileController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+        $groups = $user->teams;
 
+
+        return view('curator.profile.index', compact('groups'));
     }
 }
