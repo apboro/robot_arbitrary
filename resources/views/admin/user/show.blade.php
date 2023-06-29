@@ -17,7 +17,7 @@
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>
                             <p class="text-muted">{{ $dateCreated->day }} {{ $dateCreated->translatedFormat('F') }} {{ $dateCreated->year }} {{ $dateCreated->format('H:i') }}</p>
                         </li>
-                        @if($user->role->id === \App\Models\User::ROLE_CURATOR)
+                        @if($user->role->id === \App\Enums\Role::ROLE_CURATOR->value)
                             <li class="list-group-item">
                                 <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                                 <p class="text-muted">
@@ -28,7 +28,7 @@
                                     @endforelse
                                 </p>
                             </li>
-                        @elseif($user->role->id === \App\Models\User::ROLE_STUDENT)
+                        @elseif($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
                             <li class="list-group-item">
                                 <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                                 <p class="text-muted">
@@ -53,7 +53,9 @@
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
+                        @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
+                        @endif
                     </ul>
                 </div>
                 <div class="card-body">
@@ -63,7 +65,7 @@
                             <div class="post">
                                 <div class="user-block">
                                     <img class="img-circle img-bordered-sm"
-                                         src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="user image">
+                                         src="{{ asset('preview.png') }}" alt="user image">
                                     <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
                                     <span class="description">Shared publicly - 7:30 PM today</span>
                                 </div>

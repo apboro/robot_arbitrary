@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware\Curator;
 
+use App\Enums\Role;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class CuratorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ((int)auth()->user()->role->id !== User::ROLE_CURATOR) {
+        if ((int)auth()->user()->role->id !== Role::ROLE_CURATOR->value) {
             abort(404);
         }
         return $next($request);
