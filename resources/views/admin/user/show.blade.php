@@ -50,74 +50,31 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
+                        <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Докладные</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Докладные</a></li>
-                        @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
-                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a>
-                            </li>
-                        @endif
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
-                        <div class="active tab-pane" id="activity">
-
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm"
-                                         src="{{ asset('preview.png') }}" alt="user image">
-                                    <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                                    <span class="description">Shared publicly - 7:30 PM today</span>
-                                </div>
-
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="timeline">
-                            @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
-                                @forelse($user->claims_student as $claim)
-                                    <div class="timeline timeline-inverse">
-                                        <div class="time-label"><span
-                                                class="bg-danger">{{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
-                                        </div>
-                                        <div>
-
-                                            <div class="timeline-item">
-                                                <div class="timeline-body">
-                                                    <div class="post">
-                                                        <div class="user-block">
-                                                            <img class="img-circle img-bordered-sm"
-                                                                 src="{{ asset('preview.png') }}" alt="user image">
-                                                            <span
-                                                            class="username">{{ $claim->teacher->surname }} {{ $claim->teacher->name }} {{ $claim->teacher->middleName }}</span>
-                                                        <span
-                                                            class="description">{{ $claim->teacher->role->title }}</span>
-                                                    </div>
-
-                                                    <p>
-                                                        {{ $claim->comment ?? 'Отсутствует' }}
-                                                    </p>
-                                                    </div>
-                                                </div>
-                                                <div class="timeline-footer">
-                                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}"
-                                                       class="btn btn-primary btn-sm" target="_blank">Просмотреть</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="active tab-pane" id="timeline">
+                            @forelse($user->claims_student as $claim)
+                                <div class="post">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm"
+                                             src="{{ asset('preview.png') }}" alt="user image">
+                                        <span
+                                            class="username">{{ $claim->teacher->surname }} {{ $claim->teacher->name }} {{ $claim->teacher->middleName }}</span>
+                                        <span
+                                            class="description">Дата публикации - {{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
                                     </div>
-                                @empty
-                                    @include('includes.no-data')
-                                @endforelse
-                            @endif
+                                    <p>{{ $claim->comment ?? 'Комментарий отсутствует' }}</p>
+                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-danger">Просмотреть</a>
+                                </div>
+                            @empty
+                                @include('includes.no-data')
+                            @endforelse
                         </div>
                         <div class="tab-pane" id="settings">
                             <form action="{{ route('admin.user.group.store', $user->id) }}" method="POST"
