@@ -17,7 +17,7 @@
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>
                             <p class="text-muted">{{ $dateCreated->day }} {{ $dateCreated->translatedFormat('F') }} {{ $dateCreated->year }} {{ $dateCreated->format('H:i') }}</p>
                         </li>
-                        @if($user->role->id === \App\Models\User::ROLE_CURATOR)
+                        @if($user->role->id === \App\Enums\Role::ROLE_CURATOR->value)
                             <li class="list-group-item">
                                 <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                                 <p class="text-muted">
@@ -28,7 +28,7 @@
                                     @endforelse
                                 </p>
                             </li>
-                        @elseif($user->role->id === \App\Models\User::ROLE_STUDENT)
+                        @elseif($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
                             <li class="list-group-item">
                                 <strong><i class="fas fa-book mr-1"></i> Группа</strong>
                                 <p class="text-muted">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Main\Admin\Group;
 
+use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Group\StoreRequest;
 use App\Http\Requests\Admin\Group\UpdateRequest;
@@ -37,7 +38,7 @@ class AdminGroupController extends Controller implements AdminGroupInterface
     public function show(Group $group)
     {
         $curators = $group->curators;
-        $teachers = User::where('role_id', User::ROLE_CURATOR)->get();
+        $teachers = User::where('role_id', Role::ROLE_CURATOR->value)->get();
         $specializations = Specialization::all()->sortBy('id');
         $groupSpecializations = $group->specializations;
         $students = $group->students;
