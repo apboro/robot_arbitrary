@@ -13,6 +13,7 @@ use App\Http\Controllers\Main\Admin\User\GroupUser\AdminGroupUserController;
 use App\Http\Controllers\Main\Admin\User\Password\AdminPasswordUserController;
 use App\Http\Controllers\Main\Admin\User\Role\AdminUserRoleController;
 use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
+use App\Http\Controllers\Main\Claim\ClaimController;
 use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
 use App\Http\Controllers\Main\IndexController;
@@ -136,6 +137,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function () {
             Route::get('/', [CuratorProfileController::class, 'index'])->name('curator.profile.index');
         });
+    });
+
+    Route::group(['namespace' => 'Claim', 'prefix' => 'claim'], function () {
+        Route::get('/', [ClaimController::class, 'index'])->name('claim.index');
     });
 });
 

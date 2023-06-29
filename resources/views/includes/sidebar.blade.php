@@ -39,7 +39,7 @@
                     </li>
                 @endif
                 <li class="nav-item">
-                    <a href="{{ route('curator.index') }}" class="nav-link">
+                    <a href="{{ route('claim.index') }}" class="nav-link">
                         <i class="fas fa-file mr-2"></i>
                         <p>Докладная <i class="fas fa-angle-right right"></i></p>
                     </a>
