@@ -53,7 +53,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
-                        @if($user->role->id === \App\Enums\Role::ROLE_CURATOR->value)
+                        @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
                         @endif
                     </ul>
