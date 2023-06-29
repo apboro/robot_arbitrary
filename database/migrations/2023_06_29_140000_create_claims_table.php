@@ -12,6 +12,20 @@ return new class extends Migration {
     {
         Schema::create('claims', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('teacher_id');
+
+            $table->index('student_id', 'claim_student_idx');
+            $table->index('teacher_id', 'claim_teacher_idx');
+
+            $table->foreign('student_id', 'claim_student_fk')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('teacher_id', 'claim_teacher_fk')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->text('comment')->nullable();
+
+            $table->text('claim_file');
+
             $table->timestamps();
         });
     }

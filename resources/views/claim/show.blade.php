@@ -44,8 +44,9 @@
                         <div class="active tab-pane" id="activity">
 
                             <h3 class="text-secondary mb-3">Составление докладной</h3>
-                            <form action="" method="POST"
-                                  class="form-horizontal">
+                            <form action="{{ route('claim.store', $user->id) }}" method="POST"
+                                  class="form-horizontal" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="formFile" class="form-label">Выберите файл с докладной <sup
                                             class="text-danger">*</sup></label>
