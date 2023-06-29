@@ -29,15 +29,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.user.index') }}" class="nav-link">
+                    <a href="{{ route('curator.profile.index') }}" class="nav-link">
                         <i class="fas fa-info-circle mr-2"></i>
                         <p>Профиль группы <i class="fas fa-angle-right right"></i></p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.user.index') }}" class="nav-link">
-                        <i class="fas fa-file mr-2"></i>
-                        <p>Прогулы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
             </ul>
