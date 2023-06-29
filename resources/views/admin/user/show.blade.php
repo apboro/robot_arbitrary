@@ -54,7 +54,8 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Докладные</a></li>
                         @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a>
+                            </li>
                         @endif
                     </ul>
                 </div>
@@ -81,20 +82,21 @@
                         </div>
 
                         <div class="tab-pane" id="timeline">
-                            @foreach($user->claims_student as $claim)
-                                <div class="timeline timeline-inverse">
-                                    <div class="time-label"><span
-                                            class="bg-danger">{{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }} {{ \Carbon\Carbon::parse($claim->created_at)->format('H:i:s') }}</span>
-                                    </div>
-                                    <div>
+                            @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
+                                @forelse($user->claims_student as $claim)
+                                    <div class="timeline timeline-inverse">
+                                        <div class="time-label"><span
+                                                class="bg-danger">{{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
+                                        </div>
+                                        <div>
 
-                                        <div class="timeline-item">
-                                            <div class="timeline-body">
-                                                <div class="post">
-                                                    <div class="user-block">
-                                                        <img class="img-circle img-bordered-sm"
-                                                             src="{{ asset('preview.png') }}" alt="user image">
-                                                        <span
+                                            <div class="timeline-item">
+                                                <div class="timeline-body">
+                                                    <div class="post">
+                                                        <div class="user-block">
+                                                            <img class="img-circle img-bordered-sm"
+                                                                 src="{{ asset('preview.png') }}" alt="user image">
+                                                            <span
                                                             class="username">{{ $claim->teacher->surname }} {{ $claim->teacher->name }} {{ $claim->teacher->middleName }}</span>
                                                         <span
                                                             class="description">{{ $claim->teacher->role->title }}</span>
@@ -103,41 +105,44 @@
                                                     <p>
                                                         {{ $claim->comment ?? 'Отсутствует' }}
                                                     </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-footer">
-                                                <a href="{{ asset('storage/'. $claim->claim_file ) }}"
-                                                   class="btn btn-primary btn-sm" target="_blank">Просмотреть</a>
+                                                <div class="timeline-footer">
+                                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}"
+                                                       class="btn btn-primary btn-sm" target="_blank">Просмотреть</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @empty
+                                    @include('includes.no-data')
+                                @endforelse
+                            @endif
                         </div>
                         <div class="tab-pane" id="settings">
                             <form action="{{ route('admin.user.group.store', $user->id) }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
                                 @forelse($userGroups as $userGroup)
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Текущая
-                                                группа</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control"
-                                                       value="{{ $userGroup->title ?? 'Отсутствует' }}" id="inputName"
-                                                       readonly>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Текущая
+                                            группа</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"
+                                                   value="{{ $userGroup->title ?? 'Отсутствует' }}" id="inputName"
+                                                   readonly>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Дата
-                                                зачисления</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control"
-                                                       value="{{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->day }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->year }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->format('H:i:s') }}"
-                                                       id="inputName"
-                                                       readonly>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Дата
+                                            зачисления</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"
+                                                   value="{{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->day }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->year }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->format('H:i:s') }}"
+                                                   id="inputName"
+                                                   readonly>
                                         </div>
+                                    </div>
                                 @empty
                                     @include('includes.no-data')
                                 @endforelse
