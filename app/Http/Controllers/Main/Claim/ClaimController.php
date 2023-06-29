@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\Main\Claim;
 
+use App\Enums\Role;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Curator\Student\StoreRequest;
 use App\Models\User;
 
 class ClaimController extends Controller
 {
     public function index()
     {
-        return view('claim.index');
+        $users = User::where('role_id', Role::ROLE_STUDENT)->get();
+        return view('claim.index', compact('users'));
+    }
+
+    public function show(User $user)
+    {
+        return view('claim.show', compact('user'));
     }
 }

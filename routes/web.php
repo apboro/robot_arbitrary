@@ -141,6 +141,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
     Route::group(['namespace' => 'Claim', 'prefix' => 'claim'], function () {
         Route::get('/', [ClaimController::class, 'index'])->name('claim.index');
+        Route::get('/user/{user}', [ClaimController::class, 'show'])->name('claim.show');
     });
 });
 
