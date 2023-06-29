@@ -16,12 +16,6 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     use SoftDeletes;
 
-    const ROLE_ADMIN = 1;
-    const ROLE_TEACHER = 2;
-    const ROLE_STUDENT = 3;
-    const ROLE_CURATOR = 4;
-    const ROLE_ROBOT = 5;
-
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.

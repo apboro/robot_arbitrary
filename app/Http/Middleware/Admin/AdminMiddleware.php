@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware\Admin;
 
+use App\Enums\Role;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ((int)auth()->user()->role->id !== User::ROLE_ADMIN) {
+        if ((int)auth()->user()->role->id !== Role::ROLE_ADMIN->value) {
             abort(404);
         }
         return $next($request);
