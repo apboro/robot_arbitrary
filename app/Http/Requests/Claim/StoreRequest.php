@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
         return [
             'student_id' => 'required|integer|exists:users,id',
             'teacher_id' => 'required|integer|exists:users,id',
-            'comment' => 'string|min:1',
+            'comment' => 'nullable|string',
             'claim_file' => 'required|file',
         ];
     }
