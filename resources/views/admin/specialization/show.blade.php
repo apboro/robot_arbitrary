@@ -45,7 +45,13 @@
                                         @forelse($groups as $group)
                                             <div class="col-12">
                                                 <h5><i class="fas fa-info"></i> {{ $group->title }}</h5>
-                                                <p>Куратор</p>
+                                                <p>
+                                                    @forelse($group->curators as $curator)
+                                                        {{ $curator->surname }} {{ $curator->name }} {{ $curator->middleName }}
+                                                    @empty
+                                                        Отсутствует
+                                                    @endforelse
+                                                </p>
                                             </div>
                                         @empty
                                             @include('includes.no-data')
