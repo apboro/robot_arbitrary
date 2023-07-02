@@ -19,7 +19,8 @@ class CuratorController extends Controller
     public function show(User $user)
     {
         $groups = $user->groups;
-        return view('curator.show', compact('user', 'groups'));
+        $claims = $user->claims_student()->orderBy('created_at', 'desc')->get();
+        return view('curator.show', compact('user', 'groups', 'claims'));
     }
 
     public function destroy(StoreRequest $request, User $user)

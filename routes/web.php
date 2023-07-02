@@ -144,6 +144,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/user/{user}', [ClaimController::class, 'show'])->name('claim.show');
         Route::post('/', [ClaimController::class, 'store'])->name('claim.store');
         Route::get('/search', [ClaimController::class, 'search'])->name('claim.search');
+        Route::get('/my-report', [ClaimController::class, 'report'])->name('claim.report');
     });
 });
 
