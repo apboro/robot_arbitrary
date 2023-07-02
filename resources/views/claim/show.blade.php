@@ -51,12 +51,15 @@
                                     <label for="formFile" class="form-label">Выберите файл с докладной <sup
                                             class="text-danger">*</sup></label>
                                     <input class="form-control" name="claim_file" type="file" id="formFile" required>
+                                    <div id="formFile" class="form-text">
+                                        Формат загружаемого файла: <span class="text-dark fs-6">.doc, .docx</span>
+                                    </div>
                                 </div>
                                 @csrf
                                 <input type="hidden" name="student_id" id="" value="{{ $user->id }}">
                                 <input type="hidden" name="teacher_id" id="" value="{{ auth()->user()->id }}">
                                 <div class="form-group">
-                                    <label for="comment_claim">Укажите дополнительный комментарий</label>
+                                    <label for="comment_claim">Укажите дополнительный текст</label>
                                     <textarea class="form-control" id="comment_claim" name="comment" rows="3"
                                               placeholder="Введите текст..."></textarea>
                                     <div id="comment_claim" class="form-text">
