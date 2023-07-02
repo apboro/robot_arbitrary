@@ -146,6 +146,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/search', [ClaimController::class, 'search'])->name('claim.search');
         Route::get('/my-report', [ClaimController::class, 'report'])->name('claim.report');
     });
+
+    Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {
+        Route::get('/', [IndexController::class, 'search'])->name('truancy.index');
+    });
 });
 
 
