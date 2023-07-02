@@ -5,6 +5,10 @@
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Выберите студента для подачи докладной</span>
         <div class="d-flex align-items-center">
+            <a href="{{ route('claim.report') }}" class="btn btn-light border border-1"
+               data-bs-toggle="tooltip"
+               data-bs-html="true" data-bs-placement="top" title="Все докладные которые, Вы когда-то создавали"><i
+                    class="far fa-file mr-1"></i> Мои докладные</a>
             <form action="{{ route('claim.search') }}" method="GET" class="form-horizontal ml-2">
                 <div class="d-flex">
                     <input type="search" name="search" value="" class="form-control"

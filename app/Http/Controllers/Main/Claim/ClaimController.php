@@ -47,4 +47,11 @@ class ClaimController extends Controller
 
         return view('claim.index', compact('users'));
     }
+
+    public function report()
+    {
+        $user = auth()->user();
+        $claims = $user->claims_teacher()->orderBy('created_at', 'desc')->get();
+        return view('claim.report', compact('user', 'claims'));
+    }
 }

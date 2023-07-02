@@ -43,10 +43,11 @@ class AdminUserController extends Controller implements AdminUserInterface, Admi
     {
         $curators = $user->teams;
         $userGroups = $user->groups;
+        $claims = $user->claims_student()->orderBy('created_at', 'desc')->get();
         $groups = Group::all()->sortBy('id');
         $dateCreated = Carbon::parse($user->created_at);
 
-        return view('admin.user.show', compact('user', 'dateCreated', 'groups', 'userGroups', 'curators'));
+        return view('admin.user.show', compact('user', 'dateCreated', 'groups', 'userGroups', 'curators', 'claims'));
     }
 
     public function edit(User $user)

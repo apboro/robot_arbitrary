@@ -59,7 +59,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="active tab-pane" id="timeline">
-                            @forelse($user->claims_student as $claim)
+                            @forelse($claims as $claim)
                                 <div class="post">
                                     <div class="user-block">
                                         <img class="img-circle img-bordered-sm"
