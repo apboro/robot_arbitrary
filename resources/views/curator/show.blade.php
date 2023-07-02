@@ -39,22 +39,22 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm"
-                                         src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="user image">
-                                    <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                                    <span class="description">Shared publicly - 7:30 PM today</span>
+                            @forelse($user->claims_student as $claim)
+                                <div class="post">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm"
+                                             src="{{ asset('preview.png') }}" alt="user image">
+                                        <span
+                                            class="username">{{ $claim->teacher->surname }} {{ $claim->teacher->name }} {{ $claim->teacher->middleName }}</span>
+                                        <span
+                                            class="description">Дата публикации - {{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
+                                    </div>
+                                    <p>{{ $claim->comment ?? 'Комментарий отсутствует' }}</p>
+                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-danger">Просмотреть</a>
                                 </div>
-
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
-                            </div>
+                            @empty
+                                @include('includes.no-data')
+                            @endforelse
                         </div>
                         <div class="tab-pane" id="documents">
                             <div class="post">

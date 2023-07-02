@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Interfaces\admin\user\AdminUserInterface;
 use App\Interfaces\admin\user\search\AdminUserSearchInterface;
+use App\Models\Claim;
 use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;

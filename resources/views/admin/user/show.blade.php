@@ -50,126 +50,56 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Докладные</a>
+                        <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Докладные</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Документы</a></li>
-                        @if($user->role->id === \App\Enums\Role::ROLE_STUDENT->value)
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a></li>
-                        @endif
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Настройки</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
-                        <div class="active tab-pane" id="activity">
-
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm"
-                                         src="{{ asset('preview.png') }}" alt="user image">
-                                    <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                                    <span class="description">Shared publicly - 7:30 PM today</span>
-                                </div>
-
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="timeline">
-                            <div class="timeline timeline-inverse">
-                                <div class="time-label"><span class="bg-danger">10 Feb. 2014</span>
-                                </div>
-                                <div>
-                                    <i class="fas fa-envelope bg-primary"></i>
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="far fa-clock"></i> 12:05</span>
-                                        <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-                                        <div class="timeline-body">
-                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                            quora plaxo ideeli hulu weebly balihoo...
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                        </div>
+                        <div class="active tab-pane" id="timeline">
+                            @forelse($user->claims_student as $claim)
+                                <div class="post">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm"
+                                             src="{{ asset('preview.png') }}" alt="user image">
+                                        <span
+                                            class="username">{{ $claim->teacher->surname }} {{ $claim->teacher->name }} {{ $claim->teacher->middleName }}</span>
+                                        <span
+                                            class="description">Дата публикации - {{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
                                     </div>
+                                    <p>{{ $claim->comment ?? 'Комментарий отсутствует' }}</p>
+                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-danger">Просмотреть</a>
                                 </div>
-                                <div>
-                                    <i class="fas fa-user bg-info"></i>
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
-                                        <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your
-                                            friend request
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="fas fa-comments bg-warning"></i>
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
-                                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post
-                                        </h3>
-                                        <div class="timeline-body">
-                                            Take me to your leader!
-                                            Switzerland is small and neutral!
-                                            We are more like Germany, ambitious and misunderstood!
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="time-label"><span class="bg-success">3 Jan. 2014</span>
-                                </div>
-                                <div>
-                                    <i class="fas fa-camera bg-purple"></i>
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-                                        <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-                                        <div class="timeline-body">
-                                            <img src="https://placehold.it/150x100" alt="...">
-                                            <img src="https://placehold.it/150x100" alt="...">
-                                            <img src="https://placehold.it/150x100" alt="...">
-                                            <img src="https://placehold.it/150x100" alt="...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="far fa-clock bg-gray"></i>
-                                </div>
-                            </div>
+                            @empty
+                                @include('includes.no-data')
+                            @endforelse
                         </div>
                         <div class="tab-pane" id="settings">
                             <form action="{{ route('admin.user.group.store', $user->id) }}" method="POST"
                                   class="form-horizontal">
                                 @csrf
                                 @forelse($userGroups as $userGroup)
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Текущая
-                                                группа</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control"
-                                                       value="{{ $userGroup->title ?? 'Отсутствует' }}" id="inputName"
-                                                       readonly>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Текущая
+                                            группа</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"
+                                                   value="{{ $userGroup->title ?? 'Отсутствует' }}" id="inputName"
+                                                   readonly>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Дата
-                                                зачисления</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control"
-                                                       value="{{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->day }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->year }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->format('H:i:s') }}"
-                                                       id="inputName"
-                                                       readonly>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Дата
+                                            зачисления</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"
+                                                   value="{{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->day }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->year }} {{ \Carbon\Carbon::parse($userGroup->pivot->created_at)->format('H:i:s') }}"
+                                                   id="inputName"
+                                                   readonly>
                                         </div>
+                                    </div>
                                 @empty
                                     @include('includes.no-data')
                                 @endforelse
