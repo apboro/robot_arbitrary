@@ -2,23 +2,24 @@
 @section('title', 'Главная')
 
 @section('content')
-    <div class="card card-light">
-        <div class="card-header d-flex flex-column">
-            <h3 class="card-title">Создание рапортички</h3>
-            <div id="emailHelp" class="form-text">Выберите группу, предмет, пару</div>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('truancy.index') }}" method="GET" class="mb-3">
-                <div class="row">
-                    <div class="col-3">
-                        <select class="form-select" id="group_id" name="group_id">
-                            @foreach($groups as $group)
-                                <option value="{{ $group->id }}">{{ $group->title }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <select class="form-select" id="item_id" name="item_id">
+    @can('view-create-report-panel', auth()->user())
+        <div class="card card-light">
+            <div class="card-header d-flex flex-column">
+                <h3 class="card-title">Создание рапортички</h3>
+                <div id="emailHelp" class="form-text">Выберите группу, предмет, пару</div>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('truancy.index') }}" method="GET">
+                    <div class="row">
+                        <div class="col-3">
+                            <select class="form-select" id="group_id" name="group_id">
+                                @foreach($groups as $group)
+                                    <option value="{{ $group->id }}">{{ $group->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select" id="item_id" name="item_id">
                             @foreach($items as $item)
                                 <option value="{{ $item->id }}">{{ $item->title }}</option>
                             @endforeach
@@ -42,4 +43,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection
