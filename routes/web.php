@@ -16,8 +16,7 @@ use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\Claim\ClaimController;
 use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
-use App\Http\Controllers\Main\Education\EducationController;
-use App\Http\Controllers\Main\Education\Reference\ReferenceController;
+use App\Http\Controllers\Main\Education\Worker\Reference\ReferenceController;
 use App\Http\Controllers\Main\Education\Worker\WorkerController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
@@ -160,10 +159,13 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
         Route::group(['namespace' => 'Worker', 'prefix' => 'worker'], function () {
             Route::get('/', [WorkerController::class, 'index'])->name('worker.index');
-        });
 
-        Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
-            Route::get('/', [ReferenceController::class, 'index'])->name('reference.index');
+            Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
+                Route::post('/', [ReferenceController::class, 'store'])->name('reference.store');
+                Route::get('/reference/{reference}', [ReferenceController::class, 'edit'])->name('reference.edit');
+                Route::patch('/reference/{reference}', [ReferenceController::class, 'update'])->name('reference.update');
+                Route::delete('/reference/{reference}', [ReferenceController::class, 'destroy'])->name('reference.destroy');
+            });
         });
     });
 });

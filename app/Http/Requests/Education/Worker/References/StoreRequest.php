@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Requests\Education\Worker\References;
+
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|min:10'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это поле обязательно для заполнения',
+            'title.min' => 'Минимальная длина названия 10 символов',
+        ];
+    }
+}
