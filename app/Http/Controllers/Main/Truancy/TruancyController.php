@@ -25,8 +25,8 @@ class TruancyController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-//dd($data);
-        Truancies::insert($data);
+
+        Truancies::create([$data]);
 
         return redirect()->route('main.index');
     }
