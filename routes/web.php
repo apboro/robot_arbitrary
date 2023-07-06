@@ -158,7 +158,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     Route::group(['namespace' => 'Education', 'prefix' => 'education'], function () {
 
         Route::group(['namespace' => 'Worker', 'prefix' => 'worker'], function () {
-            Route::get('/', [WorkerController::class, 'index'])->name('worker.index');
+            Route::get('/', [WorkerController::class, 'index'])->name('education.worker.index');
 
             Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
                 Route::post('/', [ReferenceController::class, 'store'])->name('education.worker.reference.store');
@@ -166,6 +166,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
                 Route::patch('/reference/{reference}', [ReferenceController::class, 'update'])->name('education.worker.reference.update');
                 Route::delete('/reference/{reference}', [ReferenceController::class, 'destroy'])->name('education.worker.reference.destroy');
             });
+        });
+
+        Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
+
         });
     });
 });
