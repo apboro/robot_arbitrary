@@ -56,7 +56,7 @@
                     </div>
                     <div class="tab-pane" id="action">
                         <h3 class="text-secondary mb-3">Действия</h3>
-                        <form action="{{ route('reference.store') }}" method="POST">
+                        <form action="{{ route('education.worker.reference.store') }}" method="POST">
                             @csrf
                             <div class="form-group w-25">
                                 <label for="formFile" class="form-label">Добавить новый вид справки <sup
@@ -103,13 +103,14 @@
                                 </div>
                                 <div>
                                     <div class="d-flex gx-5">
-                                        <a href="{{ route('reference.edit', $reference->id) }}"
+                                        <a href="{{ route('education.worker.reference.edit', $reference->id) }}"
                                            class="btn btn-light mx-1"
                                            data-bs-toggle="tooltip"
                                            data-bs-html="true" data-bs-placement="top" title="Редактировать">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('reference.destroy', $reference->id) }}" method="POST">
+                                        <form action="{{ route('education.worker.reference.destroy', $reference->id) }}"
+                                              method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-light ml-1" data-bs-toggle="tooltip"

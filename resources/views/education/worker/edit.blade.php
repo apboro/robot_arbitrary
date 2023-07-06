@@ -2,7 +2,8 @@
 @section('title', 'Редактирование')
 
 @section('content')
-    <form action="{{ route('reference.edit', $reference->id) }}" method="POST" class="form-horizontal w-25">
+    <form action="{{ route('education.worker.reference.edit', $reference->id) }}" method="POST"
+          class="form-horizontal w-25">
         @csrf
         @method('patch')
         <div class="form-group row">

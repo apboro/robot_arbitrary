@@ -161,10 +161,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::get('/', [WorkerController::class, 'index'])->name('worker.index');
 
             Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
-                Route::post('/', [ReferenceController::class, 'store'])->name('reference.store');
-                Route::get('/reference/{reference}', [ReferenceController::class, 'edit'])->name('reference.edit');
-                Route::patch('/reference/{reference}', [ReferenceController::class, 'update'])->name('reference.update');
-                Route::delete('/reference/{reference}', [ReferenceController::class, 'destroy'])->name('reference.destroy');
+                Route::post('/', [ReferenceController::class, 'store'])->name('education.worker.reference.store');
+                Route::get('/reference/{reference}', [ReferenceController::class, 'edit'])->name('education.worker.reference.edit');
+                Route::patch('/reference/{reference}', [ReferenceController::class, 'update'])->name('education.worker.reference.update');
+                Route::delete('/reference/{reference}', [ReferenceController::class, 'destroy'])->name('education.worker.reference.destroy');
             });
         });
     });
