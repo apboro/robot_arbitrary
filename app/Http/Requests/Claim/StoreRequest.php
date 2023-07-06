@@ -26,7 +26,15 @@ class StoreRequest extends FormRequest
             'student_id' => 'required|integer|exists:users,id',
             'teacher_id' => 'required|integer|exists:users,id',
             'comment' => 'nullable|string',
-            'claim_file' => 'required|file',
+            'claim_file' => 'required|file|mimes:pdf,doc,docx|max:10000',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'claim_file.mimes' => 'Расширение файла недопустимо',
+            'claim_file.max' => 'Слишком большой размер файла',
         ];
     }
 }

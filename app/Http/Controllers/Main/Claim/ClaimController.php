@@ -23,7 +23,7 @@ class ClaimController extends Controller
         return view('claim.show', compact('user'));
     }
 
-    public function store(StoreRequest $request, User $user)
+    public function store(StoreRequest $request)
     {
         $data = $request->validated();
         $data['claim_file'] = Storage::disk('public')->put('/claims', $data['claim_file']);

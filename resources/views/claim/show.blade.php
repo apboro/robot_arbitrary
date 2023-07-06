@@ -51,8 +51,12 @@
                                     <label for="formFile" class="form-label">Выберите файл с докладной <sup
                                             class="text-danger">*</sup></label>
                                     <input class="form-control" name="claim_file" type="file" id="formFile" required>
+                                    @error('claim_file')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <div id="formFile" class="form-text">
-                                        Формат загружаемого файла: <span class="text-dark fs-6">.doc, .docx</span>
+                                        Формат загружаемого файла: <span
+                                            class="text-dark fs-6">  .pdf, .doc, .docx</span>
                                     </div>
                                 </div>
                                 @csrf
