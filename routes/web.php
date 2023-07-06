@@ -18,6 +18,7 @@ use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
+use App\Http\Controllers\Main\Truancy\TruancyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -145,6 +146,11 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::post('/', [ClaimController::class, 'store'])->name('claim.store');
         Route::get('/search', [ClaimController::class, 'search'])->name('claim.search');
         Route::get('/my-report', [ClaimController::class, 'report'])->name('claim.report');
+    });
+
+    Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {
+        Route::get('/', [TruancyController::class, 'index'])->name('truancy.index');
+        Route::post('/', [TruancyController::class, 'store'])->name('truancy.store');
     });
 });
 

@@ -2,68 +2,46 @@
 @section('title', 'Главная')
 
 @section('content')
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>150</h3>
-
-                    <p>Пользователи</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+    @can('view-create-report-panel', auth()->user())
+        <div class="card card-light">
+            <div class="card-header d-flex flex-column">
+                <h3 class="card-title">Создание рапортички</h3>
+                <div id="emailHelp" class="form-text">Выберите группу, предмет, пару</div>
             </div>
+            <div class="card-body">
+                <form action="{{ route('truancy.index') }}" method="GET">
+                    <div class="row">
+                        <div class="col-3">
+                            <select class="form-select" id="group_id" name="group_id">
+                                @foreach($groups as $group)
+                                    <option value="{{ $group->id }}">{{ $group->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select" id="item_id" name="item_id">
+                            @foreach($items as $item)
+                                <option value="{{ $item->id }}">{{ $item->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="form-select" id="couple" name="couple">
+                            <option value="1">1 пара</option>
+                            <option value="2">2 пара</option>
+                            <option value="3">3 пара</option>
+                            <option value="4">5 пара</option>
+                            <option value="5">6 пара</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-outline-dark" data-bs-toggle="tooltip"
+                                data-bs-html="true" data-bs-placement="top" title="Приступить к созданию"><i
+                                class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-                <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Группы</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-layer-group"></i>
-                </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-                <div class="inner">
-                    <h3>44</h3>
-
-                    <p>Предметы</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-book"></i>
-                </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Прогулы</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-sign-out-alt"></i>
-                </div>
-                <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
     </div>
-    <!-- /.row -->
+    @endcan
 @endsection
