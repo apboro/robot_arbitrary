@@ -8,14 +8,14 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" href="#reference" data-toggle="tab">Справки</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#statement" data-toggle="tab">Заявления</a>
-                    </li>
+                    {{--                    <li class="nav-item"><a class="nav-link invi" href="#statement" data-toggle="tab">Заявления</a>--}}
+                    {{--                    </li>--}}
                     <li class="nav-item"><a class="nav-link" href="#action" data-toggle="tab">Действия</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#all_reference" data-toggle="tab">Все справки</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#all_statement" data-toggle="tab">Все заявления</a>
-                    </li>
+                    {{--                    <li class="nav-item"><a class="nav-link" href="#all_statement" data-toggle="tab">Все заявления</a>--}}
+                    {{--                    </li>--}}
                 </ul>
             </div>
             <div class="card-body">
@@ -67,20 +67,20 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-danger"><b>Создать</b></button>
                         </div>
-                        <hr>
-                        <h3 class="text-secondary mb-3">Действия</h3>
-                        <div class="form-group w-25">
-                            <label for="formFile" class="form-label">Добавить новый вид заявления <sup
-                                    class="text-danger">*</sup></label>
-                            <input class="form-control" name="title" type="text" id="formFile" required>
-                            @error('claim_file')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-danger"><b>Создать</b></button>
-                        </div>
-                        <hr>
+                        {{--                        <hr>--}}
+                        {{--                        <h3 class="text-secondary mb-3">Действия</h3>--}}
+                        {{--                        <div class="form-group w-25">--}}
+                        {{--                            <label for="formFile" class="form-label">Добавить новый вид заявления <sup--}}
+                        {{--                                    class="text-danger">*</sup></label>--}}
+                        {{--                            <input class="form-control" name="title" type="text" id="formFile" required>--}}
+                        {{--                            @error('claim_file')--}}
+                        {{--                            <p class="text-danger">{{ $message }}</p>--}}
+                        {{--                            @enderror--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <button type="submit" class="btn btn-danger"><b>Создать</b></button>--}}
+                        {{--                        </div>--}}
+                        {{--                        <hr>--}}
                     </div>
                     <div class="tab-pane" id="all_reference">
 
