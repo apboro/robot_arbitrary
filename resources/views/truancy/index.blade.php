@@ -1,6 +1,6 @@
 @extends('main.layouts.app')
 @section('title')
-    Рапортичка | {{ $group->title }}
+    Рапортичка | {{ $group->title }} | {{ $item->title }} | Пара: {{ $couple }}
 @endsection
 
 @section('content')

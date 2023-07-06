@@ -8,6 +8,7 @@ use App\Http\Requests\Truancies\StoreRequest;
 use App\Models\Group;
 use App\Models\Item;
 use App\Models\Truancies;
+use Illuminate\Support\Facades\DB;
 
 class TruancyController extends Controller
 {
@@ -25,9 +26,10 @@ class TruancyController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+        $group = $data['group_id'];
+        $item = $data['item_id'];
+        $couple = $data['couple'];
 
-        Truancies::create([$data]);
-
-        return redirect()->route('main.index');
+        return redirect()->route('truancy.index', compact('group', 'item', 'couple'));
     }
 }
