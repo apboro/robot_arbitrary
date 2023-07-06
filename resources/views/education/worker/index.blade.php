@@ -62,6 +62,9 @@
                                 <label for="formFile" class="form-label">Добавить новый вид справки <sup
                                         class="text-danger">*</sup></label>
                                 <input class="form-control" name="title" type="text" id="formFile">
+                                <div id="formFile" class="form-text">
+                                    Минимальная длина названия справки 10 символов
+                                </div>
                                 @error('title')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -89,16 +92,16 @@
 
                         <h3 class="text-secondary mb-3">Все справки</h3>
                         @forelse($references as $reference)
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="user-panel d-flex align-items-center">
-                                    <div class="info">
-                                        <div class="col-1">
-                                            <div class="row-1"><span
-                                                    class="badge bg-danger">{{ $reference->title }}</span></div>
-                                        </div>
-                                    </div>
+                            <div class="post d-flex align-items-center">
+                                <div class="user-block">
+                                    <img class="img-circle img-bordered-sm"
+                                         src="{{ asset('preview.png') }}" alt="user image">
+                                    <span
+                                        class="username">{{ $reference->title }}</span>
+                                    <span
+                                        class="description">Дата публикации - {{ \Carbon\Carbon::parse($reference->created_at)->day }} {{ \Carbon\Carbon::parse($reference->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($reference->created_at)->year }}</span>
                                 </div>
-                                <div class="info">
+                                <div>
                                     <div class="d-flex gx-5">
                                         <a href="{{ route('reference.edit', $reference->id) }}"
                                            class="btn btn-light mx-1"
@@ -116,7 +119,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                         @empty
                             @include('includes.no-data')
                         @endforelse
