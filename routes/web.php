@@ -18,6 +18,7 @@ use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
 use App\Http\Controllers\Main\Education\EducationController;
 use App\Http\Controllers\Main\Education\Reference\ReferenceController;
+use App\Http\Controllers\Main\Education\Worker\WorkerController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
 use App\Http\Controllers\Main\Truancy\TruancyController;
@@ -156,6 +157,11 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     });
 
     Route::group(['namespace' => 'Education', 'prefix' => 'education'], function () {
+
+        Route::group(['namespace' => 'Worker', 'prefix' => 'worker'], function () {
+            Route::get('/', [WorkerController::class, 'index'])->name('worker.index');
+        });
+
         Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
             Route::get('/', [ReferenceController::class, 'index'])->name('reference.index');
         });

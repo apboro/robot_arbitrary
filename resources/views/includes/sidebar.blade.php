@@ -62,12 +62,18 @@
                                 <p>Заказать справку</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('reference.index') }}" class="nav-link">
+                                <i class="nav-icon far fa-file-alt"></i>
+                                <p>Написать заявление</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{--                @endcan--}}
                 {{--                @can('view-management-educational-panel', auth()->user())--}}
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('worker.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>Учебный отдел <i class="fas fa-angle-right right"></i></p>
                     </a>
