@@ -5,5 +5,6 @@
       'badge text-bg-info' => auth()->user()->role->id === \App\Enums\Role::ROLE_STUDENT->value,
       'badge text-bg-warning' => auth()->user()->role->id === \App\Enums\Role::ROLE_CURATOR->value,
       'badge text-bg-success' => auth()->user()->role->id === \App\Enums\Role::ROLE_ROBOT->value,
+      'badge text-bg-secondary' => auth()->user()->role->id === \App\Enums\Role::ROLE_EDUCATIONAL_PART->value,
     ])>{{ auth()->user()->role->title }}
 </span>

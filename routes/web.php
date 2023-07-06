@@ -16,6 +16,8 @@ use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\Claim\ClaimController;
 use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
+use App\Http\Controllers\Main\Education\EducationController;
+use App\Http\Controllers\Main\Education\Reference\ReferenceController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
 use App\Http\Controllers\Main\Truancy\TruancyController;
@@ -151,6 +153,12 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {
         Route::get('/', [TruancyController::class, 'index'])->name('truancy.index');
         Route::post('/', [TruancyController::class, 'store'])->name('truancy.store');
+    });
+
+    Route::group(['namespace' => 'Education', 'prefix' => 'education'], function () {
+        Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
+            Route::get('/', [ReferenceController::class, 'index'])->name('reference.index');
+        });
     });
 });
 

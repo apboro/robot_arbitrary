@@ -18,14 +18,14 @@
                 data-accordion="false">
                 <li class="nav-item">
                     <a href="{{ route('main.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-home mr-2"></i>
+                        <i class="nav-icon fas fa-home"></i>
                         <p>Главная <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 @can('view-admin-panel', auth()->user())
                     <li class="nav-item">
                         <a href="{{ route('admin.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-user-cog mr-2"></i>
+                            <i class="nav-icon fas fa-user-cog"></i>
                             <p>Администрирование <i class="fas fa-angle-right right"></i></p>
                         </a>
                     </li>
@@ -33,7 +33,7 @@
                 @can('view-curator-panel', auth()->user())
                     <li class="nav-item">
                         <a href="{{ route('curator.index') }}" class="nav-link">
-                            <i class="fas fa-wrench mr-2"></i>
+                            <i class="nav-icon fas fa-wrench"></i>
                             <p>Управление группой <i class="fas fa-angle-right right"></i></p>
                         </a>
                     </li>
@@ -41,11 +41,38 @@
                 @can('view-claim-panel', auth()->user())
                     <li class="nav-item">
                         <a href="{{ route('claim.index') }}" class="nav-link">
-                            <i class="fas fa-file mr-2"></i>
+                            <i class="nav-icon fas fa-file"></i>
                             <p>Докладная <i class="fas fa-angle-right right"></i></p>
                         </a>
                     </li>
                 @endcan
+                {{--                @can('view-educational-panel', auth()->user())--}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-graduate"></i>
+                        <p>
+                            Учебная часть
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('reference.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-file-word"></i>
+                                <p>Заказать справку</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{--                @endcan--}}
+                {{--                @can('view-management-educational-panel', auth()->user())--}}
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-user-graduate"></i>
+                        <p>Учебный отдел <i class="fas fa-angle-right right"></i></p>
+                    </a>
+                </li>
+                {{--                @endcan--}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

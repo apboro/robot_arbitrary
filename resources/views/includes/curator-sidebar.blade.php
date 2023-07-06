@@ -18,19 +18,19 @@
                 data-accordion="false">
                 <li class="nav-item">
                     <a href="{{ route('main.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-home mr-2"></i>
+                        <i class="nav-icon fas fa-home"></i>
                         <p>Главная <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('curator.index') }}" class="nav-link">
-                        <i class="fas fa-wrench mr-2"></i>
+                        <i class="nav-icon fas fa-wrench"></i>
                         <p>Управление группой <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('curator.profile.index') }}" class="nav-link">
-                        <i class="fas fa-info-circle mr-2"></i>
+                        <i class="nav-icon fas fa-info-circle"></i>
                         <p>Профиль группы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
