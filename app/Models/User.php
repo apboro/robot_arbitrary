@@ -82,4 +82,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Claim::class, 'teacher_id', 'id');
     }
+
+    public function references(): HasMany
+    {
+        return $this->hasMany(ReferenceStudent::class, 'user_id', 'id');
+    }
 }

@@ -57,7 +57,7 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('education.student.reference.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-file-word"></i>
                                 <p>Заказать справку</p>
                             </a>

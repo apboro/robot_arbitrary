@@ -7,7 +7,7 @@ use App\Http\Requests\Education\Worker\References\StoreRequest;
 use App\Http\Requests\Education\Worker\References\UpdateRequest;
 use App\Models\Reference;
 
-class ReferenceController extends Controller
+class ReferenceWorkerController extends Controller
 {
     public function store(StoreRequest $request)
     {
@@ -15,7 +15,7 @@ class ReferenceController extends Controller
 
         Reference::create($data);
 
-        return redirect()->route('worker.index');
+        return redirect()->route('education.worker.index');
     }
 
     public function edit(Reference $reference)
@@ -35,6 +35,6 @@ class ReferenceController extends Controller
     public function destroy(Reference $reference)
     {
         $reference->delete();
-        return redirect()->route('worker.index');
+        return redirect()->route('education.worker.index');
     }
 }

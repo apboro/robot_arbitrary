@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('references', function (Blueprint $table) {
+        Schema::create('reference', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
             $table->timestamps();
@@ -22,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('references');
+        Schema::dropIfExists('reference');
     }
 };

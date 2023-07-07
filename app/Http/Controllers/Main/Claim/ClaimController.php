@@ -14,7 +14,7 @@ class ClaimController extends Controller
 {
     public function index()
     {
-        $users = User::where('role_id', Role::ROLE_STUDENT)->get();
+        $users = User::where('role_id', Role::ROLE_STUDENT->value)->get();
         return view('claim.index', compact('users'));
     }
 

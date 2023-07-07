@@ -16,7 +16,8 @@ use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\Claim\ClaimController;
 use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
-use App\Http\Controllers\Main\Education\Worker\Reference\ReferenceController;
+use App\Http\Controllers\Main\Education\Student\Reference\ReferenceStudentController;
+use App\Http\Controllers\Main\Education\Worker\Reference\ReferenceWorkerController;
 use App\Http\Controllers\Main\Education\Worker\WorkerController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
@@ -162,15 +163,22 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::get('/', [WorkerController::class, 'index'])->name('education.worker.index');
 
             Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
-                Route::post('/', [ReferenceController::class, 'store'])->name('education.worker.reference.store');
-                Route::get('/reference/{reference}', [ReferenceController::class, 'edit'])->name('education.worker.reference.edit');
-                Route::patch('/reference/{reference}', [ReferenceController::class, 'update'])->name('education.worker.reference.update');
-                Route::delete('/reference/{reference}', [ReferenceController::class, 'destroy'])->name('education.worker.reference.destroy');
+                Route::post('/', [ReferenceWorkerController::class, 'store'])->name('education.worker.reference.store');
+                Route::get('/reference/{reference}', [ReferenceWorkerController::class, 'edit'])->name('education.worker.reference.edit');
+                Route::patch('/reference/{reference}', [ReferenceWorkerController::class, 'update'])->name('education.worker.reference.update');
+                Route::delete('/reference/{reference}', [ReferenceWorkerController::class, 'destroy'])->name('education.worker.reference.destroy');
             });
         });
 
         Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
 
+            Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
+                Route::get('/', [ReferenceStudentController::class, 'index'])->name('education.student.reference.index');
+                Route::post('/', [ReferenceStudentController::class, 'store'])->name('education.student.reference.store');
+                Route::get('/reference/{reference}', [ReferenceStudentController::class, 'edit'])->name('education.student.reference.edit');
+                Route::patch('/reference/{reference}', [ReferenceStudentController::class, 'update'])->name('education.student.reference.update');
+                Route::delete('/reference/{reference}', [ReferenceStudentController::class, 'destroy'])->name('education.student.reference.destroy');
+            });
         });
     });
 });
