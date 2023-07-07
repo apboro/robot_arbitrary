@@ -18,6 +18,7 @@ use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
 use App\Http\Controllers\Main\Education\Student\Reference\ReferenceStudentController;
 use App\Http\Controllers\Main\Education\Worker\Reference\ReferenceWorkerController;
+use App\Http\Controllers\Main\Education\Worker\Student\ReferenceStudentWorkerController;
 use App\Http\Controllers\Main\Education\Worker\WorkerController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
@@ -167,6 +168,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
                 Route::get('/reference/{reference}', [ReferenceWorkerController::class, 'edit'])->name('education.worker.reference.edit');
                 Route::patch('/reference/{reference}', [ReferenceWorkerController::class, 'update'])->name('education.worker.reference.update');
                 Route::delete('/reference/{reference}', [ReferenceWorkerController::class, 'destroy'])->name('education.worker.reference.destroy');
+            });
+
+            Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
+                Route::get('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'show'])->name('education.worker.reference.student.show');
             });
         });
 

@@ -25,4 +25,9 @@ class ReferenceStudent extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function reference(): BelongsTo
+    {
+        return $this->belongsTo(Reference::class, 'reference_id', 'id');
+    }
 }

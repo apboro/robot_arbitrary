@@ -43,7 +43,8 @@
                                         class="description">Дата публикации - {{ \Carbon\Carbon::parse($student->created_at)->day }} {{ \Carbon\Carbon::parse($student->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($student->created_at)->year }}</span>
                                 </div>
                                 <div>
-                                    <a href="" class="btn btn-danger" target="_blank">Просмотреть</a>
+                                    <a href="{{ route('education.worker.reference.student.show', $student->id) }}"
+                                       class="btn btn-danger">Просмотреть</a>
                                 </div>
                             </div>
                         @empty
