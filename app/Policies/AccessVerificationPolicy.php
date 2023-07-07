@@ -38,7 +38,7 @@ class AccessVerificationPolicy
 
     public function viewEducationalPanel(User $user): bool
     {
-        return $user->role->id != Role::ROLE_EDUCATIONAL_PART->value && $user->role->id != Role::ROLE_ADMIN->value;
+        return $user->role->id == Role::ROLE_STUDENT->value;
     }
 
     public function viewManagementEducationalPanel(User $user): bool

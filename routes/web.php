@@ -160,7 +160,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     Route::group(['namespace' => 'Education', 'prefix' => 'education'], function () {
 
         // TODO: Add Middleware `worker`
-        Route::group(['namespace' => 'Worker', 'prefix' => 'worker'], function () {
+        Route::group(['namespace' => 'Worker', 'prefix' => 'worker', 'middleware' => 'worker'], function () {
             Route::get('/', [WorkerController::class, 'index'])->name('education.worker.index');
 
             Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
@@ -176,7 +176,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             });
         });
 
-        Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
+        Route::group(['namespace' => 'Student', 'prefix' => 'student', 'middleware' => 'student'], function () {
 
             Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
                 Route::get('/', [ReferenceStudentController::class, 'index'])->name('education.student.reference.index');
