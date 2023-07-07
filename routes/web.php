@@ -181,9 +181,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
                 Route::get('/', [ReferenceStudentController::class, 'index'])->name('education.student.reference.index');
                 Route::post('/', [ReferenceStudentController::class, 'store'])->name('education.student.reference.store');
-                Route::get('/reference/{reference}', [ReferenceStudentController::class, 'edit'])->name('education.student.reference.edit');
-                Route::patch('/reference/{reference}', [ReferenceStudentController::class, 'update'])->name('education.student.reference.update');
-                Route::delete('/reference/{reference}', [ReferenceStudentController::class, 'destroy'])->name('education.student.reference.destroy');
+                Route::get('/{referenceStudent}', [ReferenceStudentController::class, 'show'])->name('education.student.reference.show');
             });
         });
     });

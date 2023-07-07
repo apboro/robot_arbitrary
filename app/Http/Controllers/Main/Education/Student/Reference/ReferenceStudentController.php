@@ -28,23 +28,8 @@ class ReferenceStudentController extends Controller
         return redirect()->route('education.student.reference.index');
     }
 
-    public function edit(Reference $reference)
+    public function show(ReferenceStudent $referenceStudent)
     {
-        return view('education.student.edit', compact('reference'));
-    }
-
-    public function update(UpdateRequest $request, Reference $reference)
-    {
-        $data = $request->validated();
-
-        $reference->update($data);
-
-        return view('education.student.edit', compact('reference'));
-    }
-
-    public function destroy(Reference $reference)
-    {
-        $reference->delete();
-        return redirect()->route('education.student.index');
+        return view('education.student.reference.show', compact('referenceStudent'));
     }
 }

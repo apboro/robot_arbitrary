@@ -54,7 +54,7 @@
                                     <img class="img-circle img-bordered-sm"
                                          src="{{ asset('preview.png') }}" alt="user image">
                                     <span
-                                        class="username">{{ $myReference->student->surname }} {{ $myReference->student->name }} {{ $myReference->student->middleName }} <sup><span @class([
+                                        class="username">{{ $myReference->reference->title }} <sup><span @class([
                                                             'badge text-bg-danger' => $myReference->status === 'Новая',
                                                             'badge text-bg-success' => $myReference->status === 'Выполнено',
                                                                                                                         ])>{{ $myReference->status }}</span></sup></span>
@@ -63,11 +63,13 @@
                                 </div>
                                 <div>
                                     <div class="d-flex gx-5">
-                                        <a href=""
-                                           class="btn btn-light mx-1"
-                                           title="Просмотреть информацию">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                        @if($myReference->status == 'Выполнено')
+                                            <a href="{{ route('education.student.reference.show', $myReference->id) }}"
+                                               class="btn btn-light mx-1"
+                                               title="Просмотреть справку">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
