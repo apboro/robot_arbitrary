@@ -15,9 +15,7 @@ class ReferenceStudentController extends Controller
         $completedReferences = ReferenceStudent::where('status', 'Выполнено')->count();
         $user = auth()->user();
         $myReferences = $user->references()->orderBy('created_at', 'desc')->get();
-//        foreach ($claims as $claim) {
-//            dd($claim->reference_student);
-//        }
+
         return view('education.student.reference.index', compact('references', 'completedReferences', 'myReferences'));
     }
 
