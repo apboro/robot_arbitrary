@@ -172,6 +172,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
             Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
                 Route::get('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'show'])->name('education.worker.reference.student.show');
+                Route::patch('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'update'])->name('education.worker.reference.student.update');
             });
         });
 

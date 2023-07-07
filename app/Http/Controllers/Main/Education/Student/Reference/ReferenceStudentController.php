@@ -12,7 +12,7 @@ class ReferenceStudentController extends Controller
     public function index()
     {
         $references = Reference::all()->sortBy('id');
-        $completedReferences = ReferenceStudent::where('status', 'Выполнено')->count();
+        $completedReferences = ReferenceStudent::where('status', 'Выполнено')->where('user_id', auth()->user()->id)->count();
         $user = auth()->user();
         $myReferences = $user->references()->orderBy('created_at', 'desc')->get();
 

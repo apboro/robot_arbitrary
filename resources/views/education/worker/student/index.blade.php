@@ -2,8 +2,10 @@
 @section('title', 'Учебный отдел')
 
 @section('content')
-    <form action="" method="POST" class="form-horizontal w-10">
+    <form action="{{ route('education.worker.reference.student.update', $referenceStudent->id) }}" method="POST"
+          class="form-horizontal w-10" enctype="multipart/form-data">
         @csrf
+        @method('patch')
         <div class="form-group row">
             <label for="user_family" class="col-sm-2 col-form-label">Фамилия</label>
             <div class="col-sm-10 w-25">
@@ -45,12 +47,20 @@
                        readonly>
             </div>
         </div>
+        <div class="form-group row">
+            <label for="user_family" class="col-sm-2 col-form-label">Статус</label>
+            <div class="col-sm-10 w-25">
+                <input type="text" class="form-control-plaintext"
+                       value="{{ $referenceStudent->status }}" id="user_family"
+                       readonly>
+            </div>
+        </div>
         @if($referenceStudent->take == 'Онлайн')
             <div class="form-group w-25">
-                <label for="formFile" class="form-label">Выберите файл со справкой <sup
+                <label for="reference_file" class="form-label">Выберите файл со справкой <sup
                         class="text-danger">*</sup></label>
-                <input class="form-control" name="claim_file" type="file" id="formFile" required>
-                @error('claim_file')
+                <input class="form-control" name="reference_file" type="file" id="reference_file" required>
+                @error('reference_file')
                 <p class="text-danger">{{ $message }}</p>
                 @enderror
                 <div id="formFile" class="form-text">

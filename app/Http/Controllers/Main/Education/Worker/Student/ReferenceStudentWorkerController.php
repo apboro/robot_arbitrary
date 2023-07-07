@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Main\Education\Worker\Student;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Main\Education\Student\Reference\UpdateRequest;
 use App\Http\Requests\Education\Student\References\StoreRequest;
+use App\Http\Requests\Education\Worker\Student\UpdateRequest;
 use App\Models\Reference;
 use App\Models\ReferenceStudent;
+use Illuminate\Support\Facades\Storage;
 
 class ReferenceStudentWorkerController extends Controller
 {
     public function show(ReferenceStudent $referenceStudent)
     {
-
-        // dd($referenceStudent);
         return view('education.worker.student.index', compact('referenceStudent'));
     }
 
@@ -31,13 +30,17 @@ class ReferenceStudentWorkerController extends Controller
         return view('education.student.edit', compact('reference'));
     }
 
-    public function update(UpdateRequest $request, Reference $reference)
+    public function update(UpdateRequest $request, ReferenceStudent $referenceStudent)
     {
         $data = $request->validated();
 
-        $reference->update($data);
+        if (isset($data['reference_file'])) {
+            $data['reference_file'] = Storage::disk('public')->put('/references', $data['reference_file']);
+        }
 
-        return view('education.student.edit', compact('reference'));
+        $referenceStudent->update($data);
+
+        return redirect()->route('education.worker.reference.student.show', compact('referenceStudent'));
     }
 
     public function destroy(Reference $reference)
