@@ -18,43 +18,43 @@
                 data-accordion="false">
                 <li class="nav-item">
                     <a href="{{ route('main.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-home mr-2"></i>
+                        <i class="nav-icon fas fa-home"></i>
                         <p>Главная <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.index') }}" class="nav-link">
-                        <i class="fas fa-user-cog mr-2"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>Администрирование <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.user.index') }}" class="nav-link">
-                        <i class="fas fa-users-cog mr-2"></i>
+                        <i class="nav-icon fas fa-users-cog"></i>
                         <p>Пользователи <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.role.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-tag mr-2"></i>
+                        <i class="nav-icon fas fa-user-tag"></i>
                         <p>Роли <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.group.index') }}" class="nav-link">
-                        <i class="fas fa-users mr-2"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Группы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.item.index') }}" class="nav-link">
-                        <i class="fas fa-book mr-2"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>Предметы <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.specialization.index') }}" class="nav-link">
-                        <i class="fas fa-code-branch mr-2"></i>
+                        <i class="nav-icon fas fa-code-branch"></i>
                         <p>Специальности <i class="fas fa-angle-right right"></i></p>
                     </a>
                 </li>

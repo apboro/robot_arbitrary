@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Claim;
+namespace App\Http\Requests\Education\Worker\References;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,18 +23,15 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'student_id' => 'required|integer|exists:users,id',
-            'teacher_id' => 'required|integer|exists:users,id',
-            'comment' => 'nullable|string',
-            'claim_file' => 'required|file|mimes:pdf,doc,docx|max:10000',
+            'title' => 'required|string|min:10'
         ];
     }
 
     public function messages()
     {
         return [
-            'claim_file.mimes' => 'Расширение файла недопустимо',
-            'claim_file.max' => 'Слишком большой размер файла',
+            'title.required' => 'Это поле обязательно для заполнения',
+            'title.min' => 'Минимальная длина названия 10 символов',
         ];
     }
 }

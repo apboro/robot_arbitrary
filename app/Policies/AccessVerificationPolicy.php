@@ -33,6 +33,16 @@ class AccessVerificationPolicy
 
     public function viewCreateReportPanel(User $user): bool
     {
-        return $user->role->id != Role::ROLE_STUDENT->value;
+        return $user->role->id != Role::ROLE_STUDENT->value && $user->role->id != Role::ROLE_EDUCATIONAL_PART->value;
+    }
+
+    public function viewEducationalPanel(User $user): bool
+    {
+        return $user->role->id == Role::ROLE_STUDENT->value;
+    }
+
+    public function viewManagementEducationalPanel(User $user): bool
+    {
+        return $user->role->id == Role::ROLE_EDUCATIONAL_PART->value;
     }
 }

@@ -16,6 +16,10 @@ use App\Http\Controllers\Main\Admin\User\Trash\AdminUserTrashController;
 use App\Http\Controllers\Main\Claim\ClaimController;
 use App\Http\Controllers\Main\Curator\CuratorController;
 use App\Http\Controllers\Main\Curator\Profile\CuratorProfileController;
+use App\Http\Controllers\Main\Education\Student\Reference\ReferenceStudentController;
+use App\Http\Controllers\Main\Education\Worker\Reference\ReferenceWorkerController;
+use App\Http\Controllers\Main\Education\Worker\Student\ReferenceStudentWorkerController;
+use App\Http\Controllers\Main\Education\Worker\WorkerController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
 use App\Http\Controllers\Main\Truancy\TruancyController;
@@ -151,6 +155,35 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {
         Route::get('/', [TruancyController::class, 'index'])->name('truancy.index');
         Route::post('/', [TruancyController::class, 'store'])->name('truancy.store');
+    });
+
+    Route::group(['namespace' => 'Education', 'prefix' => 'education'], function () {
+
+        // TODO: Add Middleware `worker`
+        Route::group(['namespace' => 'Worker', 'prefix' => 'worker', 'middleware' => 'worker'], function () {
+            Route::get('/', [WorkerController::class, 'index'])->name('education.worker.index');
+
+            Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
+                Route::post('/', [ReferenceWorkerController::class, 'store'])->name('education.worker.reference.store');
+                Route::get('/reference/{reference}', [ReferenceWorkerController::class, 'edit'])->name('education.worker.reference.edit');
+                Route::patch('/reference/{reference}', [ReferenceWorkerController::class, 'update'])->name('education.worker.reference.update');
+                Route::delete('/reference/{reference}', [ReferenceWorkerController::class, 'destroy'])->name('education.worker.reference.destroy');
+            });
+
+            Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
+                Route::get('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'show'])->name('education.worker.reference.student.show');
+                Route::patch('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'update'])->name('education.worker.reference.student.update');
+            });
+        });
+
+        Route::group(['namespace' => 'Student', 'prefix' => 'student', 'middleware' => 'student'], function () {
+
+            Route::group(['namespace' => 'Reference', 'prefix' => 'reference'], function () {
+                Route::get('/', [ReferenceStudentController::class, 'index'])->name('education.student.reference.index');
+                Route::post('/', [ReferenceStudentController::class, 'store'])->name('education.student.reference.store');
+                Route::get('/{referenceStudent}', [ReferenceStudentController::class, 'show'])->name('education.student.reference.show');
+            });
+        });
     });
 });
 

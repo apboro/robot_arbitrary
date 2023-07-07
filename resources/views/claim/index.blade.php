@@ -39,7 +39,7 @@
                     <a href="{{ route('claim.show', $user->id) }}" class="btn btn-light mx-1"
                        data-bs-toggle="tooltip"
                        data-bs-html="true" data-bs-placement="top"
-                       title="Просмотреть информацию о пользователе">
+                       title="Написать докладную на студента">
                         <i class="fas fa-check"></i>
                     </a>
                 </div>
