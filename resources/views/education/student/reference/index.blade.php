@@ -6,47 +6,18 @@
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#action" data-toggle="tab">Создание</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#reference" data-toggle="tab">Мои справки <sup><span
+                    <li class="nav-item"><a class="nav-link active" href="#reference" data-toggle="tab">Мои справки
+                            <sup><span
                                     class="badge text-bg-danger">{{ $completedReferences }}</span></sup></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#action" data-toggle="tab">Создание</a>
                     </li>
                 </ul>
             </div>
             <div class="card-body">
                 <div class="tab-content">
 
-                    <div class="active tab-pane" id="action">
-                        <h3 class="text-secondary mb-3">Действия</h3>
-                        <form action="{{ route('education.student.reference.store') }}" method="POST">
-                            @csrf
-                            <div class="form-group w-25">
-                                <label for="reference_id" class="form-label">Выберите тип справки <sup
-                                        class="text-danger">*</sup></label>
-                                <select name="reference_id" id="reference_id" class="form-control" required>
-                                    @foreach($references as $reference)
-                                        <option value="{{ $reference->id }}">{{ $reference->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group w-25">
-                                <label for="reference_id" class="form-label">Выберите способ получения <sup
-                                        class="text-danger">*</sup></label>
-                                <select name="take" id="reference_id" class="form-control" required>
-                                    <option value="Лично">Лично</option>
-                                    <option value="Онлайн">Онлайн</option>
-                                </select>
-                            </div>
-                            <input type="hidden" value="Новая" name="status">
-                            <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger"><b>Создать</b></button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="tab-pane" id="reference">
-
+                    <div class="active tab-pane" id="reference">
                         <h3 class="text-secondary mb-3">Мои справки</h3>
                         @forelse($myReferences as $myReference)
                             <div class="post d-flex align-items-center">
@@ -76,6 +47,35 @@
                         @empty
                             @include('includes.no-data')
                         @endforelse
+                    </div>
+
+                    <div class="tab-pane" id="action">
+                        <h3 class="text-secondary mb-3">Действия</h3>
+                        <form action="{{ route('education.student.reference.store') }}" method="POST">
+                            @csrf
+                            <div class="form-group w-25">
+                                <label for="reference_id" class="form-label">Выберите тип справки <sup
+                                        class="text-danger">*</sup></label>
+                                <select name="reference_id" id="reference_id" class="form-control" required>
+                                    @foreach($references as $reference)
+                                        <option value="{{ $reference->id }}">{{ $reference->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group w-25">
+                                <label for="reference_id" class="form-label">Выберите способ получения <sup
+                                        class="text-danger">*</sup></label>
+                                <select name="take" id="reference_id" class="form-control" required>
+                                    <option value="Лично">Лично</option>
+                                    <option value="Онлайн">Онлайн</option>
+                                </select>
+                            </div>
+                            <input type="hidden" value="Новая" name="status">
+                            <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger"><b>Создать</b></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
