@@ -159,7 +159,6 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
     Route::group(['namespace' => 'Education', 'prefix' => 'education'], function () {
 
-        // TODO: Add Middleware `worker`
         Route::group(['namespace' => 'Worker', 'prefix' => 'worker', 'middleware' => 'worker'], function () {
             Route::get('/', [WorkerController::class, 'index'])->name('education.worker.index');
 
