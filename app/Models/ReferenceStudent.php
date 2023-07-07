@@ -18,7 +18,8 @@ class ReferenceStudent extends Model
         'user_id',
         'reference_id',
         'status',
-        'take'
+        'take',
+        'reference_file'
     ];
 
     public function student(): BelongsTo
