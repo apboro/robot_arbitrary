@@ -47,14 +47,23 @@
                        readonly>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row table-success rounded-2">
             <label for="user_family" class="col-sm-2 col-form-label">Статус</label>
             <div class="col-sm-10 w-25">
-                <input type="text" class="form-control-plaintext"
+                <input type="text" class="form-control-plaintext fs-4"
                        value="{{ $referenceStudent->status }}" id="user_family"
                        readonly>
             </div>
         </div>
+        @if($referenceStudent->take == 'Онлайн')
+            <div class="form-group row">
+                <label for="user_family" class="col-sm-2 col-form-label">Файл</label>
+                <div class="col-sm-10 w-25">
+                    <a href="{{ route('education.worker.reference.student.download', $referenceStudent->id) }}"
+                       class="btn btn-dark"><i class="fas fa-download"></i> Скачать</a>
+                </div>
+            </div>
+        @endif
         @if($referenceStudent->take == 'Онлайн')
             <div class="form-group w-25">
                 <label for="reference_file" class="form-label">Выберите файл со справкой <sup
@@ -71,8 +80,9 @@
         @endif
         <input type="hidden" name="status" value="Выполнено">
         <div class="card-footer">
-            <button type="submit" class="btn btn-danger"><b>Обработать</b></button>
-            <a href="{{ route('education.worker.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
+            <button type="submit" class="btn btn-dark">Обработать</button>
+            <a href="{{ route('education.worker.index') }}" class="btn btn-dark"><i class="fas fa-times"></i>
+                Закрыть</a>
         </div>
     </form>
 @endsection

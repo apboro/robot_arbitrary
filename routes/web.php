@@ -37,7 +37,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// TODO: Using Policy for view fields
 //Route::get('/home', [MainController::class, 'index'])->name('home');
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
@@ -153,6 +152,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/download/{claim}', [ClaimController::class, 'download'])->name('claim.download');
     });
 
+    // TODO: Add Middleware `truancy`, student not access
     Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {
         Route::get('/', [TruancyController::class, 'index'])->name('truancy.index');
         Route::post('/', [TruancyController::class, 'store'])->name('truancy.store');
@@ -173,6 +173,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
                 Route::get('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'show'])->name('education.worker.reference.student.show');
                 Route::patch('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'update'])->name('education.worker.reference.student.update');
+                Route::get('/{referenceStudent}/download', [ReferenceStudentWorkerController::class, 'download'])->name('education.worker.reference.student.download');
             });
         });
 
