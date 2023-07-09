@@ -12,8 +12,9 @@
                 <span
                     class="description">Дата публикации - {{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
             </div>
-            <div>
-                <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-danger" target="_blank">Просмотреть</a>
+            <div class="d-flex align-items-center">
+                <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-dark mr-1" target="_blank">Просмотреть</a>
+                <a href="{{ route('claim.download', $claim->id) }}" class="btn btn-dark">Скачать</a>
             </div>
         </div>
     @empty

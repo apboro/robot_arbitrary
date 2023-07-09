@@ -150,6 +150,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::post('/', [ClaimController::class, 'store'])->name('claim.store');
         Route::get('/search', [ClaimController::class, 'search'])->name('claim.search');
         Route::get('/my-report', [ClaimController::class, 'report'])->name('claim.report');
+        Route::get('/download/{claim}', [ClaimController::class, 'download'])->name('claim.download');
     });
 
     Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {

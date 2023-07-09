@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Main\Claim;
 
 use App\Enums\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Claim\Download\DownloadRequest;
 use App\Http\Requests\Claim\Search\SearchRequest;
 use App\Http\Requests\Claim\StoreRequest;
 use App\Models\Claim;
 use App\Models\User;
+use Faker\Core\File;
 use Illuminate\Support\Facades\Storage;
 
 class ClaimController extends Controller
@@ -53,5 +55,10 @@ class ClaimController extends Controller
         $user = auth()->user();
         $claims = $user->claims_teacher()->orderBy('created_at', 'desc')->get();
         return view('claim.report', compact('user', 'claims'));
+    }
+
+    public function download(Claim $claim)
+    {
+        return response()->download('storage/' . $claim->claim_file);
     }
 }

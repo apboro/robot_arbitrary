@@ -50,7 +50,10 @@
                                             class="description">Дата публикации - {{ \Carbon\Carbon::parse($claim->created_at)->day }} {{ \Carbon\Carbon::parse($claim->created_at)->translatedFormat('F') }} {{ \Carbon\Carbon::parse($claim->created_at)->year }}</span>
                                     </div>
                                     <p>{{ $claim->comment ?? 'Комментарий отсутствует' }}</p>
-                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-danger">Просмотреть</a>
+                                    <a href="{{ asset('storage/'. $claim->claim_file ) }}" class="btn btn-dark"
+                                       target="_blank"><i class="fas fa-file"></i> Просмотреть</a>
+                                    <a href="{{ route('claim.download', $claim->id) }}" class="btn btn-dark"><i
+                                            class="fas fa-download"></i> Скачать</a>
                                 </div>
                             @empty
                                 @include('includes.no-data')
