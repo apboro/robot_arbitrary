@@ -24,7 +24,7 @@ class ReferenceStudentWorkerController extends Controller
 
         $referenceStudent->update($data);
 
-        return redirect()->route('education.worker.reference.student.show', compact('referenceStudent'));
+        return redirect()->route('education.worker.student.show', compact('referenceStudent'));
     }
 
     public function download(ReferenceStudent $referenceStudent)
