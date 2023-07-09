@@ -32,4 +32,9 @@ class ReferenceStudentController extends Controller
     {
         return view('education.student.reference.show', compact('referenceStudent'));
     }
+
+    public function download(ReferenceStudent $referenceStudent)
+    {
+        return response()->download('storage/' . $referenceStudent->reference_file);
+    }
 }

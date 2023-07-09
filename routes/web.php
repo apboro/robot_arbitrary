@@ -183,6 +183,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
                 Route::get('/', [ReferenceStudentController::class, 'index'])->name('education.student.reference.index');
                 Route::post('/', [ReferenceStudentController::class, 'store'])->name('education.student.reference.store');
                 Route::get('/{referenceStudent}', [ReferenceStudentController::class, 'show'])->name('education.student.reference.show');
+                Route::get('/{referenceStudent}/download', [ReferenceStudentController::class, 'download'])->name('education.student.reference.download');
             });
         });
     });

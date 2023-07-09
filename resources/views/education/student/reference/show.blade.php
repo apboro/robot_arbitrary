@@ -62,5 +62,10 @@
            title="Просмотреть справку" target="_blank">
             <i class="fas fa-edit"></i> Ваша справка
         </a>
+        <a href="{{ route('education.student.reference.download', $referenceStudent->id) }}"
+           class="btn btn-dark"
+           title="Просмотреть справку" target="_blank">
+            <i class="fas fa-download"></i> Скачать
+        </a>
     @endif
 @endsection
