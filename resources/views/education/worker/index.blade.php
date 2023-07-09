@@ -83,20 +83,6 @@
                                 <button type="submit" class="btn btn-danger"><b>Создать</b></button>
                             </div>
                         </form>
-                        {{--                        <hr>--}}
-                        {{--                        <h3 class="text-secondary mb-3">Действия</h3>--}}
-                        {{--                        <div class="form-group w-25">--}}
-                        {{--                            <label for="formFile" class="form-label">Добавить новый вид заявления <sup--}}
-                        {{--                                    class="text-danger">*</sup></label>--}}
-                        {{--                            <input class="form-control" name="title" type="text" id="formFile" required>--}}
-                        {{--                            @error('claim_file')--}}
-                        {{--                            <p class="text-danger">{{ $message }}</p>--}}
-                        {{--                            @enderror--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <button type="submit" class="btn btn-danger"><b>Создать</b></button>--}}
-                        {{--                        </div>--}}
-                        {{--                        <hr>--}}
                     </div>
                     <div class="tab-pane" id="all_reference">
 
@@ -133,11 +119,6 @@
                         @empty
                             @include('includes.no-data')
                         @endforelse
-                    </div>
-                    <div class="tab-pane" id="all_statement">
-
-                        <h3 class="text-secondary mb-3">Все заявления</h3>
-
                     </div>
                 </div>
             </div>
