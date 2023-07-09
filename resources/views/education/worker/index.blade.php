@@ -10,14 +10,10 @@
                             <sup><span
                                     class="badge text-bg-danger">{{ $newReferences }}</span></sup></a>
                     </li>
-                    {{--                    <li class="nav-item"><a class="nav-link invi" href="#statement" data-toggle="tab">Заявления</a>--}}
-                    {{--                    </li>--}}
                     <li class="nav-item"><a class="nav-link" href="#action" data-toggle="tab">Действия</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#all_reference" data-toggle="tab">Все справки</a>
                     </li>
-                    {{--                    <li class="nav-item"><a class="nav-link" href="#all_statement" data-toggle="tab">Все заявления</a>--}}
-                    {{--                    </li>--}}
                 </ul>
             </div>
             <div class="card-body">
