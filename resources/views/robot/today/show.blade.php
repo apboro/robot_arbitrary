@@ -15,26 +15,24 @@
                     class="fas fa-file-import mr-1"></i> Экспорт</a>
         </div>
     </div>
-    <div class="d-flex align-items-center justify-content-between">
-        <table class="table table-bordered">
-            <thead>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Студент</th>
+            <th colspan="1" style="width: 40px">Часы</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for($i = 1; $i < 11; $i++)
             <tr>
-                <th style="width: 10px">#</th>
-                <th>Студент</th>
-                <th colspan="1" style="width: 40px">Часы</th>
+                <td>{{ $i }}.</td>
+                <td>Фамилия Имя Отчество</td>
+                <td class="text-center">
+                    2
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            @for($i = 1; $i < 11; $i++)
-                <tr>
-                    <td>{{ $i }}.</td>
-                    <td>Фамилия Имя Отчество</td>
-                    <td class="text-center">
-                        2
-                    </td>
-                </tr>
-            @endfor
-            </tbody>
-        </table>
-    </div>
+        @endfor
+        </tbody>
+    </table>
 @endsection

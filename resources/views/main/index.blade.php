@@ -20,28 +20,28 @@
                         </div>
                         <div class="col-4">
                             <select class="form-select" id="item_id" name="item_id">
-                            @foreach($items as $item)
-                                <option value="{{ $item->id }}">{{ $item->title }}</option>
-                            @endforeach
-                        </select>
+                                @foreach($items as $item)
+                                    <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <select class="form-select" id="couple" name="couple">
+                                <option value="1">1 пара</option>
+                                <option value="2">2 пара</option>
+                                <option value="3">3 пара</option>
+                                <option value="4">5 пара</option>
+                                <option value="5">6 пара</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-outline-dark" data-bs-toggle="tooltip"
+                                    data-bs-html="true" data-bs-placement="top" title="Приступить к созданию"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
                     </div>
-                    <div class="col-3">
-                        <select class="form-select" id="couple" name="couple">
-                            <option value="1">1 пара</option>
-                            <option value="2">2 пара</option>
-                            <option value="3">3 пара</option>
-                            <option value="4">5 пара</option>
-                            <option value="5">6 пара</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <button type="submit" class="btn btn-outline-dark" data-bs-toggle="tooltip"
-                                data-bs-html="true" data-bs-placement="top" title="Приступить к созданию"><i
-                                class="fas fa-plus"></i></button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
     @endcan
 @endsection
