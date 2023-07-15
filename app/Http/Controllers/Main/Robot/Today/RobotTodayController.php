@@ -10,4 +10,9 @@ class RobotTodayController extends Controller
     {
         return view('robot.today.index');
     }
+
+    public function show()
+    {
+        return view('robot.today.show');
+    }
 }

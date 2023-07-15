@@ -194,6 +194,8 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
         Route::group(['namespace' => 'Today', 'prefix' => 'today'], function () {
             Route::get('/', [RobotTodayController::class, 'index'])->name('robot.today.index');
+            // TODO: Условие перехода (параметры)
+            Route::get('/show', [RobotTodayController::class, 'show'])->name('robot.today.show');
         });
 
         Route::group(['namespace' => 'Arbitrary', 'prefix' => 'arbitrary'], function () {
