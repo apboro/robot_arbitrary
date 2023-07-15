@@ -19,7 +19,7 @@
                 @for($i = 1; $i < 10; $i++)
                     <tr>
                         <td>{{ $i }}.</td>
-                        <td>Группа {{ $i }}</td>
+                        <td>Название группы {{ $i }}</td>
                         <td class="text-center">
                             <a href="{{ route('robot.today.show') }}" class="btn btn-light" title="Просмотреть"><i
                                     class="far fa-calendar-check"></i></a>
@@ -47,7 +47,7 @@
                 @for($i = 1; $i < 10; $i++)
                     <tr>
                         <td>{{ $i }}.</td>
-                        <td>Группа {{ $i }}</td>
+                        <td>Название группы {{ $i }}</td>
                         <td class="text-center">
                             <a href="{{ route('robot.today.show') }}" class="btn btn-light" title="Просмотреть"><i
                                     class="far fa-calendar-check"></i></a>
@@ -75,7 +75,7 @@
                 @for($i = 1; $i < 10; $i++)
                     <tr>
                         <td>{{ $i }}.</td>
-                        <td>Группа {{ $i }}</td>
+                        <td>Название группы {{ $i }}</td>
                         <td class="text-center">
                             <a href="{{ route('robot.today.show') }}" class="btn btn-light" title="Просмотреть"><i
                                     class="far fa-calendar-check"></i></a>

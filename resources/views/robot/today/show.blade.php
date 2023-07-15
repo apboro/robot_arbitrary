@@ -29,7 +29,7 @@
                 <td>{{ $i }}.</td>
                 <td>Фамилия Имя Отчество</td>
                 <td class="text-center">
-                    2
+                    {{ rand(0, 2) }}
                 </td>
             </tr>
         @endfor

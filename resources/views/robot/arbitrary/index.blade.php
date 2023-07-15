@@ -25,10 +25,11 @@
                         <input type="date" class="form-control"
                                value="">
                     </div>
-                    <div class="col-2">
-                        <button type="submit" class="btn btn-outline-dark" data-bs-toggle="tooltip"
+                    <div class="col-3 text-center">
+                        <button type="submit" class="btn btn-dark" data-bs-toggle="tooltip"
                                 data-bs-html="true" data-bs-placement="top" title="Сформировать"><i
-                                class="fas fa-plus"></i></button>
+                                class="fas fa-poo-storm"></i> Сформировать
+                        </button>
                     </div>
                 </div>
             </form>
