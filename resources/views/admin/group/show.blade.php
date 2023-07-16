@@ -36,8 +36,10 @@
                             @endforelse
                         </li>
                     </ul>
-                    <a href="{{ route('admin.group.edit', $group->id) }}" class="btn btn-primary btn-block"><b>Редактировать</b></a>
-                    <a href="{{ route('admin.group.index') }}" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
+                    <a href="{{ route('admin.group.edit', $group->id) }}" class="btn btn-primary btn-block"><i
+                            class="fas fa-edit"></i> Редактировать</a>
+                    <a href="{{ route('admin.group.index') }}" class="btn btn-secondary btn-block"><i
+                            class="fas fa-arrow-left"></i> Закрыть</a>
                 </div>
             </div>
         </div>

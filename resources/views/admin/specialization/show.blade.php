@@ -21,9 +21,9 @@
                         </li>
                     </ul>
                     <a href="{{ route('admin.specialization.edit', $specialization->id) }}"
-                       class="btn btn-primary btn-block"><b>Редактировать</b></a>
+                       class="btn btn-primary btn-block"><i class="fas fa-edit"></i> Редактировать</a>
                     <a href="{{ route('admin.specialization.index') }}"
-                       class="btn btn-secondary btn-block"><b>Закрыть</b></a>
+                       class="btn btn-secondary btn-block"><i class="fas fa-arrow-left"></i> Закрыть</a>
                 </div>
             </div>
         </div>

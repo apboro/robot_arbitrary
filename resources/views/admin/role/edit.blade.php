@@ -13,8 +13,8 @@
         </div>
         <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Обновить</button>
-                <a href="{{ route('admin.role.index') }}" class="btn btn-secondary"><b>Отмена</b></a>
+                <a href="{{ route('admin.role.index') }}" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Закрыть</a>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-sync-alt"></i> Обновить</button>
             </div>
         </div>
     </form>

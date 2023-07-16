@@ -4,7 +4,7 @@
 @section('content')
     <div class="card card-light">
         <div class="card-header d-flex flex-column">
-            <h3 class="card-title">Формирование рапортички: семестр, год</h3>
+            <h3 class="card-title">Формирование рапортички: неделя, месяц, семестр, год</h3>
             <div id="emailHelp" class="form-text">Выберите группу, дату с какого и дату по какое</div>
         </div>
         <div class="card-body">

@@ -39,8 +39,8 @@
             </tbody>
         </table>
         <div class="d-flex">
-            <button type="submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i> Создать</button>
-            <a href="{{ route('main.index') }}" class="btn btn-outline-dark ml-2">Назад</a>
+            <button type="submit" class="btn btn-dark"><i class="fas fa-plus"></i> Создать</button>
+            <a href="{{ route('main.index') }}" class="btn btn-dark ml-2"><i class="fas fa-arrow-left"></i> Назад</a>
         </div>
     </form>
 @endsection

@@ -11,8 +11,9 @@
                 <input type="text" name="title" class="form-control" id="">
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-danger"><b>Создать</b></button>
-                <a href="{{ route('admin.group.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-save"></i> Создать</button>
+                <a href="{{ route('admin.group.index') }}" class="btn btn-dark"><i class="fas fa-arrow-left"></i>
+                    Закрыть</a>
             </div>
         </div>
     </form>
