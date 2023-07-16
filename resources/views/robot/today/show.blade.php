@@ -6,7 +6,7 @@
 @section('content')
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <div class="d-flex flex-column">
-            <span class="fw-bolder mb-2"><a href="{{ route('robot.today.index') }}" class="btn btn-outline-secondary"><i
+            <span class="fw-bolder mb-2"><a href="{{ route('robot.today.index') }}" class="btn btn-outline-dark"><i
                         class="fas fa-arrow-left"></i> Вернуться назад</a></span>
             <span class="fw-bolder">Управление рапортичкой</span>
         </div>
