@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $items = Item::all();
+        $items = Item::all()->sortBy('title');
         $groups = Group::all()->sortBy('title');
         return view('main.index', compact('items', 'groups'));
     }
