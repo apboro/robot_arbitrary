@@ -2,7 +2,7 @@
 @section('title', 'Учебный отдел')
 
 @section('content')
-    <form action="{{ route('education.worker.reference.student.update', $referenceStudent->id) }}" method="POST"
+    <form action="{{ route('education.worker.student.update', $referenceStudent->id) }}" method="POST"
           class="form-horizontal w-10" enctype="multipart/form-data">
         @csrf
         @method('patch')
@@ -61,7 +61,7 @@
                 <div class="col-sm-10 w-25">
                     <a href="{{ asset('storage/'. $referenceStudent->reference_file ) }}"
                        class="btn btn-dark" target="_blank"><i class="fas fa-edit"></i> Просмотреть</a>
-                    <a href="{{ route('education.worker.reference.student.download', $referenceStudent->id) }}"
+                    <a href="{{ route('education.worker.student.download', $referenceStudent->id) }}"
                        class="btn btn-dark" target="_blank"><i class="fas fa-download"></i> Скачать</a>
                 </div>
             </div>

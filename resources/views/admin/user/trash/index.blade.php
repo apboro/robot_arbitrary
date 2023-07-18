@@ -5,15 +5,8 @@
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Управление пользователями</span>
         <div class="d-flex align-items-center">
-            <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Добавить нового пользователя"><i
-                    class="fas fa-user-plus mr-1"></i> Создать</a>
-            <a href="" class="btn btn-outline-primary ml-2 btn-sm" data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Импортировать данные из .xlsx файла"><i
-                    class="fas fa-file-import mr-1"></i> Импорт</a>
-            <a href="{{ route('admin.user.index') }}" class="btn btn-outline-primary ml-2 btn-sm"
-               data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Пользователи"><i class="fas fa-users"></i>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-primary ml-2 btn-sm" title="Пользователи"><i
+                    class="fas fa-users"></i>
                 Пользователи</a>
             <form action="" class="form-horizontal ml-2">
                 <div class="d-flex">

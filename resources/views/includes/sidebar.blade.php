@@ -41,7 +41,7 @@
                 @can('view-claim-panel', auth()->user())
                     <li class="nav-item">
                         <a href="{{ route('claim.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-file"></i>
+                            <i class="nav-icon fas fa-exclamation"></i>
                             <p>Докладная <i class="fas fa-angle-right right"></i></p>
                         </a>
                     </li>
@@ -73,6 +73,37 @@
                         </a>
                     </li>
                 @endcan
+                {{--                @can('view-educational-panel', auth()->user())--}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-broom"></i>
+                        <p>
+                            Рапортички
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('robot.today.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-day"></i>
+                                <p>Сегодняшние</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('robot.arbitrary.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-week"></i>
+                                <p>Произвольная</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Мои рапортички</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{--                @endcan--}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

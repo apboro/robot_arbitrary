@@ -16,15 +16,11 @@
                             <strong><i class="fas fa-clock"></i> Дата создания</strong>
                             <p class="text-muted">{{ $dateCreated->day }} {{ $dateCreated->translatedFormat('F') }} {{ $dateCreated->year }} {{ $dateCreated->format('H:i') }}</p>
                         </li>
-                        <li class="list-group-item">
-                            <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                                fermentum
-                                enim neque.</p>
-                        </li>
                     </ul>
-                    <a href="{{ route('admin.item.edit', $item->id) }}" class="btn btn-primary btn-block"><b>Редактировать</b></a>
-                    <a href="{{ route('admin.item.index') }}" class="btn btn-secondary btn-block"><b>Закрыть</b></a>
+                    <a href="{{ route('admin.item.edit', $item->id) }}" class="btn btn-primary btn-block"><i
+                            class="fas fa-edit"></i> Редактировать</a>
+                    <a href="{{ route('admin.item.index') }}" class="btn btn-secondary btn-block"><i
+                            class="fas fa-arrow-left"></i> Закрыть</a>
                 </div>
             </div>
         </div>

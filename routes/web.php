@@ -22,6 +22,8 @@ use App\Http\Controllers\Main\Education\Worker\Student\ReferenceStudentWorkerCon
 use App\Http\Controllers\Main\Education\Worker\WorkerController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Main\Profile\ProfileController;
+use App\Http\Controllers\Main\Robot\Arbitrary\RobotArbitraryController;
+use App\Http\Controllers\Main\Robot\Today\RobotTodayController;
 use App\Http\Controllers\Main\Truancy\TruancyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -143,7 +145,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         });
     });
 
-    Route::group(['namespace' => 'Claim', 'prefix' => 'claim'], function () {
+    Route::group(['namespace' => 'Claim', 'prefix' => 'claim', 'middleware' => 'claim'], function () {
         Route::get('/', [ClaimController::class, 'index'])->name('claim.index');
         Route::get('/user/{user}', [ClaimController::class, 'show'])->name('claim.show');
         Route::post('/', [ClaimController::class, 'store'])->name('claim.store');
@@ -152,8 +154,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/download/{claim}', [ClaimController::class, 'download'])->name('claim.download');
     });
 
-    // TODO: Add Middleware `truancy`, student not access
-    Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy'], function () {
+    Route::group(['namespace' => 'Truancies', 'prefix' => 'truancy', 'middleware' => 'truancy'], function () {
         Route::get('/', [TruancyController::class, 'index'])->name('truancy.index');
         Route::post('/', [TruancyController::class, 'store'])->name('truancy.store');
     });
@@ -171,9 +172,9 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             });
 
             Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
-                Route::get('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'show'])->name('education.worker.reference.student.show');
-                Route::patch('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'update'])->name('education.worker.reference.student.update');
-                Route::get('/{referenceStudent}/download', [ReferenceStudentWorkerController::class, 'download'])->name('education.worker.reference.student.download');
+                Route::get('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'show'])->name('education.worker.student.show');
+                Route::patch('/{referenceStudent}', [ReferenceStudentWorkerController::class, 'update'])->name('education.worker.student.update');
+                Route::get('/{referenceStudent}/download', [ReferenceStudentWorkerController::class, 'download'])->name('education.worker.student.download');
             });
         });
 
@@ -185,6 +186,20 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
                 Route::get('/{referenceStudent}', [ReferenceStudentController::class, 'show'])->name('education.student.reference.show');
                 Route::get('/{referenceStudent}/download', [ReferenceStudentController::class, 'download'])->name('education.student.reference.download');
             });
+        });
+    });
+
+    //TODO: Add Middleware `robot` and Policy
+    Route::group(['namespace' => 'Robot', 'prefix' => 'robot'], function () {
+
+        Route::group(['namespace' => 'Today', 'prefix' => 'today'], function () {
+            Route::get('/', [RobotTodayController::class, 'index'])->name('robot.today.index');
+            // TODO: Условие перехода (параметры)
+            Route::get('/show', [RobotTodayController::class, 'show'])->name('robot.today.show');
+        });
+
+        Route::group(['namespace' => 'Arbitrary', 'prefix' => 'arbitrary'], function () {
+            Route::get('/', [RobotArbitraryController::class, 'index'])->name('robot.arbitrary.index');
         });
     });
 });

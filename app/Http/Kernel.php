@@ -3,9 +3,11 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin\AdminMiddleware;
+use App\Http\Middleware\Claim\ClaimMiddleware;
 use App\Http\Middleware\Curator\CuratorMiddleware;
 use App\Http\Middleware\Education\Student\StudentMiddleware;
 use App\Http\Middleware\Education\Worker\WorkerMiddleware;
+use App\Http\Middleware\Truancy\TruancyMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -72,5 +74,7 @@ class Kernel extends HttpKernel
         'curator' => CuratorMiddleware::class,
         'worker' => WorkerMiddleware::class,
         'student' => StudentMiddleware::class,
+        'truancy' => TruancyMiddleware::class,
+        'claim' => ClaimMiddleware::class,
     ];
 }

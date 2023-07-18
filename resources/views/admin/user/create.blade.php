@@ -37,8 +37,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-danger"><b>Создать</b></button>
-            <a href="{{ route('admin.user.index') }}" class="btn btn-secondary"><b>Закрыть</b></a>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Закрыть</a>
+            <button type="submit" class="btn btn-danger"><i class="fas fa-save"></i> Создать</button>
         </div>
     </form>
 @endsection

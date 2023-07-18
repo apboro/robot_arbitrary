@@ -5,15 +5,12 @@
     <div class="d-flex align-items-center justify-content-between pr-2 mb-3">
         <span class="fw-bolder">Управление пользователями</span>
         <div class="d-flex align-items-center">
-            <a href="{{ route('admin.user.create') }}" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Добавить нового пользователя"><i
+            <a href="{{ route('admin.user.create') }}" class="btn btn-dark btn-sm" title="Добавить нового пользователя"><i
                     class="fas fa-user-plus mr-1"></i> Создать</a>
-            <a href="" class="btn btn-outline-primary ml-2 btn-sm" data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Импортировать данные из .xlsx файла"><i
+            <a href="" class="btn btn-dark ml-2 btn-sm" title="Импортировать данные из .xlsx файла"><i
                     class="fas fa-file-import mr-1"></i> Импорт</a>
-            <a href="{{ route('admin.user.trash.index') }}" class="btn btn-outline-danger ml-2 btn-sm"
-               data-bs-toggle="tooltip"
-               data-bs-html="true" data-bs-placement="top" title="Работа с пользователями которые были удалены"><i
+            <a href="{{ route('admin.user.trash.index') }}" class="btn btn-danger ml-2 btn-sm"
+               title="Работа с пользователями которые были удалены"><i
                     class="fas fa-user-times mr-1"></i> Удаленные</a>
             <form action="{{ route('admin.user.search') }}" method="GET" class="form-horizontal ml-2">
                 <div class="d-flex">
