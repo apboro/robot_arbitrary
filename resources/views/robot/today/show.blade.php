@@ -15,6 +15,8 @@
                     class="fas fa-file-import mr-1"></i> Экспорт</a>
         </div>
     </div>
+    <p>Под полем "Часы" добавить ячейку с "ИТОГО" -> сумма всего столбца, то есть все часы сложить и получить общую
+        сумму</p>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -23,7 +25,7 @@
             <th class="text-center">Математика</th>
             <th class="text-center">Русский язык</th>
             <th class="text-center">География</th>
-            <th class="text-center">ОБЖ</th>
+            <th class="text-center">География</th>
             <th class="text-center">Веб-программирование</th>
             <th class="text-center" colspan="1">Часы</th>
         </tr>
@@ -39,6 +41,39 @@
                 <td class="text-center">
                     {{ rand(0, 2) }}
                 </td>
+                <td class="text-center">
+                    {{ rand(0, 2) }}
+                </td>
+                <td class="text-center">
+                    {{ rand(0, 2) }}
+                </td>
+                <td class="text-center">
+                    {{ rand(0, 2) }}
+                </td>
+                <td class="text-center">
+                    сумма всего ряда
+                </td>
+            </tr>
+        @endfor
+        </tbody>
+    </table>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Студент</th>
+            <th class="text-center">Информатика</th>
+            <th class="text-center">Информатика</th>
+            <th class="text-center">Информатика</th>
+            <th class="text-center" colspan="1">Часы</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for($i = 1; $i < 11; $i++)
+            <tr>
+                <td>{{ $i }}.</td>
+                <td>Фамилия Имя Отчество</td>
                 <td class="text-center">
                     {{ rand(0, 2) }}
                 </td>

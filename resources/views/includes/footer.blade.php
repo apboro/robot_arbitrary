@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <strong>ФКПОУ "КТИ" Минтруда России &copy; 2023.</strong>
+    <strong>Название заведения &copy; 2023.</strong>
     Все права защищены.
     <div class="float-right d-none d-sm-inline-block">
         <div class="d-flex flex-column align-items-center">
