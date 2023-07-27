@@ -22,72 +22,35 @@
         <tr>
             <th style="width: 10px">#</th>
             <th>Студент</th>
-            <th class="text-center">Математика</th>
-            <th class="text-center">Русский язык</th>
-            <th class="text-center">География</th>
-            <th class="text-center">География</th>
-            <th class="text-center">Веб-программирование</th>
+            @foreach($items as $item)
+                <th class="text-center">{{$item->item->title}}</th>
+            @endforeach
             <th class="text-center" colspan="1">Часы</th>
         </tr>
         </thead>
         <tbody>
-        @for($i = 1; $i < 11; $i++)
+        @php $counter = 1 @endphp
+        @foreach ($students as $index => $countHours)
+            @php $totalStudentHours = 0 @endphp
             <tr>
-                <td>{{ $i }}.</td>
-                <td>Фамилия Имя Отчество</td>
+                <td>{{$counter++}}</td>
+                <td>{{ $index }}</td>
+                @foreach ($countHours as $hours)
+                    <td class="text-center">
+                        {{ $hours }}
+                    </td>
+                    @php $totalStudentHours += $hours @endphp
+                @endforeach
                 <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    сумма всего ряда
+                    {{$totalStudentHours}}
                 </td>
             </tr>
-        @endfor
+
+        @endforeach
+        <tr>
+            <td style="text-align: right; border: none; background: none" colspan="8">Итого: {{$totalHours}}</td>
+        </tr>
         </tbody>
     </table>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th style="width: 10px">#</th>
-            <th>Студент</th>
-            <th class="text-center">Информатика</th>
-            <th class="text-center">Информатика</th>
-            <th class="text-center">Информатика</th>
-            <th class="text-center" colspan="1">Часы</th>
-        </tr>
-        </thead>
-        <tbody>
-        @for($i = 1; $i < 11; $i++)
-            <tr>
-                <td>{{ $i }}.</td>
-                <td>Фамилия Имя Отчество</td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    {{ rand(0, 2) }}
-                </td>
-                <td class="text-center">
-                    сумма всего ряда
-                </td>
-            </tr>
-        @endfor
-        </tbody>
-    </table>
 @endsection

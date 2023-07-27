@@ -26,8 +26,10 @@ class TruancyController extends Controller
         $group = Group::find($data['group_id']);
         $item = Item::find($data['item_id']);
         $couple = $data['couple'];
+        $students = $group->students->sortBy('surname')->values();
 
-        return view('truancy.index', compact('group', 'item', 'couple'));
+        return view('truancy.index', compact('group',
+            'item', 'couple', 'students'));
     }
 
     /**
@@ -45,11 +47,11 @@ class TruancyController extends Controller
         $data['teacher_id'] = Auth::user()->id;
         foreach ($students as $index => $student_id)
         {
-            if ($hoursArr[$index] > 0) {
+//            if ($hoursArr[$index] > 0) {
                 $data['student_id'] = $student_id;
                 $data['count_hours'] = $hoursArr[$index];
                 Truancies::create($data);
-            }
+//            }
         }
 
         return redirect()->route('truancy.index', compact('group', 'item', 'couple'));

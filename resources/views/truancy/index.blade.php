@@ -15,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            @forelse($group->students as $student)
+            @forelse($students as $student)
                 <input type="hidden" name="group_id" value="{{ $group->id }}">
                 <input type="hidden" name="item_id" value="{{ $item->id }}">
                 <input type="hidden" name="couple" value="{{ $couple }}">
