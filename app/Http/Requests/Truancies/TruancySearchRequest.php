@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Truancies\Search;
+namespace App\Http\Requests\Truancies;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SearchRequest extends FormRequest
+class TruancySearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

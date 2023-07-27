@@ -15,11 +15,11 @@
             </tr>
             </thead>
             <tbody>
-            @forelse($group->students as $student)
-                <input type="hidden" name="group_id[]" value="{{ $group->id }}">
-                <input type="hidden" name="item_id[]" value="{{ $item->id }}">
-                <input type="hidden" name="couple[]" value="{{ $couple }}">
-                <input type="hidden" name="teacher_id[]" value="{{ auth()->user()->id }}">
+            @forelse($students as $student)
+                <input type="hidden" name="group_id" value="{{ $group->id }}">
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
+                <input type="hidden" name="couple" value="{{ $couple }}">
+                <input type="hidden" name="teacher_id" value="{{ auth()->user()->id }}">
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $student->surname }} {{ $student->name }} <input type="hidden" name="student_id[]"

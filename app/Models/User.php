@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -86,5 +87,10 @@ class User extends Authenticatable
     public function references(): HasMany
     {
         return $this->hasMany(ReferenceStudent::class, 'user_id', 'id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->surname} {$this->name} {$this->middlename}";
     }
 }
