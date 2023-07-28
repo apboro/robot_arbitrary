@@ -8,7 +8,7 @@
             <div id="emailHelp" class="form-text">Выберите группу, дату с какого и дату по какое</div>
         </div>
         <div class="card-body">
-            <form action="{{ route('truancy.index') }}" method="GET">
+            <form action="{{ route('robot.arbitrary.show') }}" method="GET">
                 <div class="row">
                     <div class="col-3">
                         <select class="form-select" id="group_id" name="group_id">
@@ -18,11 +18,11 @@
                         </select>
                     </div>
                     <div class="col-3">
-                        <input type="date" class="form-control"
+                        <input name="date_from" type="date" class="form-control"
                                value="{{ \Carbon\Carbon::now() }}">
                     </div>
                     <div class="col-3">
-                        <input type="date" class="form-control"
+                        <input name="date_to" type="date" class="form-control"
                                value="">
                     </div>
                     <div class="col-3 text-center">
@@ -60,15 +60,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                @for($i = 1; $i < 24; $i++)
+                @php $counter = 1 @endphp
+                @foreach($students as $student)
                     <tr>
-                        <td>{{ $i }}.</td>
-                        <td>Фамилия Имя Отчество</td>
+                        <td>{{ $counter++ }}.</td>
+                        <td>{{$student->student->fullName}}</td>
                         <td class="text-center">
-                            {{ rand(50, 1000) }}
+                            {{ $student->total_hours}}
                         </td>
                     </tr>
-                @endfor
+                @endforeach
+                <tr>
+                    <td style="text-align: right; border: none; background: none" colspan="8">Итого: {{$totalHoursSum}}</td>
+                </tr>
                 </tbody>
             </table>
         </div>

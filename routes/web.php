@@ -200,6 +200,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
         Route::group(['namespace' => 'Arbitrary', 'prefix' => 'arbitrary'], function () {
             Route::get('/', [RobotArbitraryController::class, 'index'])->name('robot.arbitrary.index');
+            Route::get('/show', [RobotArbitraryController::class, 'show'])->name('robot.arbitrary.show');
         });
     });
 });
